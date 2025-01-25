@@ -66,6 +66,7 @@ obj.keyKill = nil
 
 obj.inhibitCtrlQBinding = {
   ["MacVim"] = true,
+  ["neovide"] = true,
 }
 
 function obj:killTrepidation()
