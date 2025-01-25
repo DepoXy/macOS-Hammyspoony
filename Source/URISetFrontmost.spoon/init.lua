@@ -86,11 +86,35 @@ obj.logger = hs.logger.new('URISetFrontmost')
 obj.uriSetFrontmost = function(eventName, params)
   print("eventName: " .. hs.inspect(eventName))
   print("params: " .. hs.inspect(params))
-  local app = hs.application(params['app'])
+  if params['app'] ~= nil then
+    local app = hs.application(params['app'])
 
-  if app then
-    -- DUNNO: Is this similar to `front_win:raise():focus()`?
-    app:setFrontmost()
+    if app then
+      -- DUNNO: Is this similar to `front_win:raise():focus()`?
+      app:setFrontmost()
+    else
+      hs.alert.show('No such app: ' .. params['app'])
+    end
+  elseif params['name'] ~= nil then
+    -- SAVVY: The search is not case-sensitive.
+    local found_win = hs.window.find(params['name'])
+
+    if found_win  then
+      local front_win = nil
+
+      local toggle = false
+      if toggle then
+        front_win = hs.window.frontmostWindow()
+      end
+
+      if front_win ~= found_win then
+        found_win:raise():focus()
+      else
+        front_win:minimize()
+      end
+    else
+      hs.alert.show('No such window: ' .. params['name'])
+    end
   end
 end
 
