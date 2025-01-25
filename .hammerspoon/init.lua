@@ -489,6 +489,14 @@ ignore_hotkey_slack(shift_alt_f)
 
 -- BNDNG: <Cmd-Backtick> (<Cmd-`>)
 local cmd_backtick = hs.hotkey.bind({"cmd"}, "`", function()
+  hs.application.launchOrFocus("neovide")
+end)
+
+-- SAVVY: Cannot use tilde: Neither of these work:
+--          hs.hotkey.bind({"shift", "cmd"}, "~", function()
+--          hs.hotkey.bind({"shift", "cmd"}, "tilde", function()
+-- BNDNG: <Cmd-Tilde> (<Cmd-~>)
+local cmd_tilde = hs.hotkey.bind({"shift", "cmd"}, "`", function()
   hs.application.launchOrFocus("MacVim")
 end)
 

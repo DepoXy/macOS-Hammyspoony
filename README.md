@@ -140,7 +140,9 @@ You call that a knife? This is a Hammerspoon config
 
   `<Cmd-F>`: Bring any Finder window to front, or open Finder
 
-  `<Cmd-Grave(Backtick)>` (``<Cmd-`>``): Bring MacVim to the front
+  `<Cmd-Grave(Backtick)>` (``<Cmd-`>``): Bring Neovide to the front
+
+  `<Cmd-Tilde>` (``<Shift-Cmd-~>``): Bring MacVim to the front
 
   `<Shift-Ctrl-Cmd-F>`: Bring Slack to the front, or open it
 
