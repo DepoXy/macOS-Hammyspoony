@@ -56,6 +56,14 @@ obj.frontmostApplicationUnless = {
   ["iTerm2"] = true,
   ["Terminal"] = true,
   ["Alacritty"] = true,
+  -- Unlike Neovide (see next comment), not necessary to blocklist MacVim.
+  -- - But we'll do it anyway, because mswin.vim adds <Ctrl-c>
+  --   and related maps.
+  ["MacVim"] = true,
+  -- For Neovide mswin.vim copy-paste bindings to work, don't map
+  -- Ctrl → Cmd presses.
+  -- - Otherwise, e.g., pressing <Ctrl-C> inserts "<D-c>".
+  ["neovide"] = true,
 }
 
 --- TRACK/2024-10-09: If any app already wires some behavior from any
