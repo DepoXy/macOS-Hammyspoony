@@ -489,7 +489,36 @@ ignore_hotkey_slack(shift_alt_f)
 
 -- BNDNG: <Cmd-Backtick> (<Cmd-`>)
 local cmd_backtick = hs.hotkey.bind({"cmd"}, "`", function()
-  hs.application.launchOrFocus("neovide")
+  -- Front long-running nvim TUI (running in, e.g., Alacritty).
+  --
+  -- - USYNC:
+  --     GVIM_OPEN_SERVERNAME="🦢"
+  --     NVIM_OPEN_SOCKETNAME="🦢"
+  --   ~/.depoxy/running/home/.config/depoxy/depoxyrc
+  --
+  --   - Yes, DepoXy is essentially author's dot-files project,
+  --     but so is this Hammyspoony init.lua — I expect other
+  --     users to be able to reuse the Spoons in this project,
+  --     but this top-level init.lua is pretty much tailored
+  --     to the author's tastes, because I don't expect people
+  --     to use this file verbatim. Perhaps for copy-paste, but
+  --     not as-is. So this DepoXy-specific config value (🦢) is
+  --     fine. (Not sure who I'm convincing... myself, I suppose.)
+  hs.window.find("🦢"):raise():focus()
+
+  -- ALTLY: If you wanted to front Neovide, call:
+  --
+  --     hs.application.launchOrFocus("neovide")
+  --
+  -- - HSTRY/2025-01-25: Author was running Neovide for a few days, but it
+  --   seems to fall victim to a similar performance-degrades-over-time
+  --   issue that MacVim has been exhibiting recently (or longer and I
+  --   just haven't noticed?!)... so now author is running nvim in terminal
+  --   which, fingers crossed, knocks on wood, seems performant and hasn't
+  --   shown any laggy behavior like my macOS Vim/Neovim GUIs have been
+  --   griefing me with...! Though could be my Vim plugins, but :profile
+  --   doesn't finger anything, and I've been disabling different sets of
+  --   plugins but still haven't identified the sinner or sinners...
 end)
 
 -- SAVVY: Cannot use tilde: Neither of these work:
