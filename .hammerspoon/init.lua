@@ -588,11 +588,15 @@ dateTimeSnips:bindHotkeys({
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
--- Copy `pwgen23`-like output (from Homefries) to the clipboard.
+-- <Cmd-Alt-P>: Copy `pwgen23` output (Homefries cmd.) to the clipboard.
 -- - Use printf to avoid final newline.
 -- - Don't use punctuation for first 2 or final 2 characters so you
 --   can double-click one of the ends and drag to easily select the
 --   whole "word".
+-- - CXREF: This accelerator binding tracks a Home-fries shell command
+--     https://github.com/landonb/home-fries#🍟
+--   Called `pwgen23` found locally in DepoXy env. at:
+--     ~/.kit/sh/home-fries/lib/alias/alias_pwgen.sh
 -- BNDNG: <Cmd-Alt-P>
 local cmd_alt_p = hs.hotkey.bind({"cmd", "alt"}, "P", function()
   local task = hs.task.new(
