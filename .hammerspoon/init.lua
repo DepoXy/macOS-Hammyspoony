@@ -491,9 +491,8 @@ ignore_hotkey_slack(shift_alt_f)
 local cmd_backtick = hs.hotkey.bind({"cmd"}, "`", function()
   -- Front long-running nvim TUI (running in, e.g., Alacritty).
   --
-  -- - USYNC:
-  --     GVIM_OPEN_SERVERNAME="🦢"
-  --     NVIM_OPEN_SOCKETNAME="🦢"
+  -- - USYNC: This is my LazyVim setup I use for development:
+  --     NVIM_OPEN_SOCKETNAME="🧸"
   --   ~/.depoxy/running/home/.config/depoxy/depoxyrc
   --
   --   - Yes, DepoXy is essentially author's dot-files project,
@@ -504,7 +503,7 @@ local cmd_backtick = hs.hotkey.bind({"cmd"}, "`", function()
   --     to use this file verbatim. Perhaps for copy-paste, but
   --     not as-is. So this DepoXy-specific config value (🦢) is
   --     fine. (Not sure who I'm convincing... myself, I suppose.)
-  hs.window.find("🦢"):raise():focus()
+  hs.window.find("🧸"):raise():focus()
 
   -- ALTLY: If you wanted to front Neovide, call:
   --
@@ -521,13 +520,26 @@ local cmd_backtick = hs.hotkey.bind({"cmd"}, "`", function()
   --   plugins but still haven't identified the sinner or sinners...
 end)
 
--- SAVVY: Cannot use tilde: Neither of these work:
---          hs.hotkey.bind({"shift", "cmd"}, "~", function()
---          hs.hotkey.bind({"shift", "cmd"}, "tilde", function()
--- BNDNG: <Cmd-Tilde> (<Cmd-~>)
-local cmd_tilde = hs.hotkey.bind({"shift", "cmd"}, "`", function()
-  hs.application.launchOrFocus("MacVim")
+-- BNDNG: <Cmd-Backtick> (<Cmd-`>)
+local ctrl_backtick = hs.hotkey.bind({"ctrl"}, "`", function()
+  -- - USYNC: The is the classic nvim-depoxy setup I use for notes
+  --   (at least until I port those feature into my LazyVim setup):
+  --     DEPOXY_NVIM_ALTERNATE="🦢"
+  --   ~/.depoxy/ambers/core/alias-vim.sh
+  hs.window.find("🦢"):raise():focus()
 end)
+-- HSTRY/2025-02-25: Was previously <Shift-Cmd-Tilde> aka <D-~>
+-- because <Ctrl-Backtick> was being used by AltTab, but I moved
+-- the AltTab single-app visible-window menu to <Ctrl-~> because
+-- I switch to this Neovim instance far more often (and I mostly
+-- use <Ctrl-Alt-Down> to see an app's visible windows).
+--   -- SAVVY: Cannot use tilde: Neither of these work:
+--   --          hs.hotkey.bind({"shift", "cmd"}, "~", function()
+--   --          hs.hotkey.bind({"shift", "cmd"}, "tilde", function()
+--   -- BNDNG: <Cmd-Tilde> (<Cmd-~>)
+--     local cmd_tilde = hs.hotkey.bind({"shift", "cmd"}, "`", function()
+--       hs.application.launchOrFocus("MacVim")
+--     end)
 
 -------
 
