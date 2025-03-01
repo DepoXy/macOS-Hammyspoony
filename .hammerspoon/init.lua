@@ -541,6 +541,13 @@ end)
 --       hs.application.launchOrFocus("MacVim")
 --     end)
 
+-- A third instance of Neovim with a dedicated raise binding...
+-- - Nuthin: <Ctrl-1> doesn't work (emits "1" into nvim or terminal).
+--     local ctrl_one = hs.hotkey.bind({"ctrl"}, "1", function()
+local ctrl_one = hs.hotkey.bind({"ctrl", "cmd"}, "`", function()
+  hs.window.find("🐝"):raise():focus()
+end)
+
 -------
 
 -- Slack foregrounder/opener
