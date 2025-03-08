@@ -109,6 +109,24 @@ package.path = package.path .. ";" .. os.getenv("HOME") .. "/.kit/mOS/macOS-Hamm
 
 -------
 
+-- Build LSP annotations, for Neovim LuaLS.
+-- - E.g., so LuaLS doesn't complain: "Undefined global `hs`."
+-- - REFER: (Of course this Spoon is from folke, what a hero!)
+--   https://github.com/Hammerspoon/Spoons/pull/240
+--
+-- REFER: "Note: Load this Spoon before any pathwatchers are defined to avoid unintended behaviour"
+-- https://github.com/Hammerspoon/Spoons/blob/master/Source/EmmyLua.spoon/init.lua
+-- https://github.com/Hammerspoon/Spoons/blob/master/Source/EmmyLua.spoon/docs.json
+--
+-- REFER: EmmyLua creates Lua files in the annotations directory:
+--   ~/.kit/mOS/hammerspoons/Source/EmmyLua.spoon/annotations
+-- Which you'll want to reference from a `.luarc.json` file in
+-- each Lua project's root directory.
+
+hs.loadSpoon("EmmyLua")
+
+-------
+
 -- Hot-reload config file changes using ReloadConfiguration Spoon.
 --
 -- Note this won't reload a symlimk (which is what DepoXy creates at
