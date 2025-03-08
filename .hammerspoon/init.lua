@@ -545,6 +545,9 @@ end)
 -- - Nuthin: <Ctrl-1> doesn't work (emits "1" into nvim or terminal).
 --     local ctrl_one = hs.hotkey.bind({"ctrl"}, "1", function()
 local ctrl_one = hs.hotkey.bind({"ctrl", "cmd"}, "`", function()
+  -- USYNC: DEPOXY_NVIM_TRICHOTOMY="🐝"
+  -- - FTREQ: We should shell out here and read DEPOXY_NVIM_TRICHOTOMY
+  --   from ~/.config/depoxy/depoxyrc — for now, hardcoded window name.
   hs.window.find("🐝"):raise():focus()
 end)
 
