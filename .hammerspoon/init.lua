@@ -65,7 +65,10 @@
 --        (Not that we need all the Spoons,
 --         but this is just too easy.)
 
-package.path = package.path .. ";" .. os.getenv("HOME") .. "/.kit/mOS/hammerspoons/Source/?.spoon/init.lua"
+package.path = package.path
+  .. ";"
+  .. os.getenv("HOME")
+  .. "/.kit/mOS/hammerspoons/Source/?.spoon/init.lua"
 
 -- CXREF: For reusability, this core init.lua is mostly limited to defining
 -- the keybindings, while most of the relevant functionality is implemented
@@ -87,7 +90,10 @@ package.path = package.path .. ";" .. os.getenv("HOME") .. "/.kit/mOS/hammerspoo
 --   ~/.kit/mOS/macOS-Hammyspoony/Source/NeverLoseFocus.spoon/init.lua
 --   ~/.kit/mOS/macOS-Hammyspoony/Source/TableUtils.spoon/init.lua
 --   ~/.kit/mOS/macOS-Hammyspoony/Source/URISetFrontmost.spoon/init.lua
-package.path = package.path .. ";" .. os.getenv("HOME") .. "/.kit/mOS/macOS-Hammyspoony/Source/?.spoon/init.lua"
+package.path = package.path
+  .. ";"
+  .. os.getenv("HOME")
+  .. "/.kit/mOS/macOS-Hammyspoony/Source/?.spoon/init.lua"
 
 -------
 
@@ -192,9 +198,9 @@ local minimizeAndHideWindows = hs.loadSpoon("MinimizeAndHideWindows")
 
 minimizeAndHideWindows:bindHotkeys({
   -- BNDNG: <Shift-Ctrl-Cmd-W>
-  allButFrontmost={{"shift", "ctrl", "cmd"}, "W"},
+  allButFrontmost = { { "shift", "ctrl", "cmd" }, "W" },
   -- BNDNG: <Shift-Ctrl-Alt-W>
-  allWindows={{"shift", "ctrl", "alt"}, "W"},
+  allWindows = { { "shift", "ctrl", "alt" }, "W" },
 })
 
 -- local shift_ctrl_cmd_w = minimizeAndHideWindows.keyAllButFrontmost
@@ -213,15 +219,15 @@ frillsAlacrittyAndTerminal.togglable = true
 
 frillsAlacrittyAndTerminal:bindHotkeys({
   -- BNDNG: <Shift-Ctrl-Cmd-0>
-  unminimzeAllAlacrittyWindows={{"shift", "ctrl", "cmd"}, "0"},
+  unminimzeAllAlacrittyWindows = { { "shift", "ctrl", "cmd" }, "0" },
   -- BNDNG/s: <Cmd-1>, <Cmd-2>, ..., <Cmd-9>
-  alacrittyWindowFronters1Through9Prefix={"cmd"},
+  alacrittyWindowFronters1Through9Prefix = { "cmd" },
   -- BNDNG: <Cmd-0>
-  alacrittyNewWindow={{"cmd"}, "0"},
+  alacrittyNewWindow = { { "cmd" }, "0" },
   -- BNDNG: <Shift-Cmd-0>
-  alacrittyForegrounderOpener={{"shift", "cmd"}, "0"},
+  alacrittyForegrounderOpener = { { "shift", "cmd" }, "0" },
   -- BNDNG: <Ctrl-Cmd-0>
-  terminalNewWindow={{"ctrl", "cmd"}, "0"},
+  terminalNewWindow = { { "ctrl", "cmd" }, "0" },
 })
 
 -- local shift_ctrl_cmd_0 = frillsAlacrittyAndTerminal.keyUnminimzeAllAlacrittyWindows
@@ -273,9 +279,9 @@ frillsChrome = hs.loadSpoon("FrillsChrome")
 
 frillsChrome:bindHotkeys({
   -- BNDNG: <Cmd-T>
-  newChromeWindow={{"cmd"}, "T"},
+  newChromeWindow = { { "cmd" }, "T" },
   -- BNDNG: <Shift-Cmd-T>
-  frontChromeWindow={{"shift", "cmd"}, "T"},
+  frontChromeWindow = { { "shift", "cmd" }, "T" },
 })
 
 local cmd_t = frillsChrome.keyNewChromeWindow
@@ -299,15 +305,15 @@ browserWindowFronters = hs.loadSpoon("BrowserWindowFronters")
 
 browserWindowFronters:bindHotkeys({
   -- BNDNG: <Shift-Ctrl-Cmd-A>
-  frontEmail={{"shift", "ctrl", "cmd"}, "A"},
+  frontEmail = { { "shift", "ctrl", "cmd" }, "A" },
   -- BNDNG: <Shift-Ctrl-Cmd-S>
-  frontChats={{"shift", "ctrl", "cmd"}, "S"},
+  frontChats = { { "shift", "ctrl", "cmd" }, "S" },
   -- BNDNG: <Shift-Ctrl-Cmd-P>
-  frontPowerThesaurus={{"shift", "ctrl", "cmd"}, "P"},
+  frontPowerThesaurus = { { "shift", "ctrl", "cmd" }, "P" },
   -- BNDNG: <Shift-Ctrl-Cmd-8>
-  frontRegexDict={{"shift", "ctrl", "cmd"}, "8"},
+  frontRegexDict = { { "shift", "ctrl", "cmd" }, "8" },
   -- BNDNG: <Shift-Ctrl-Cmd-R>
-  frontDevTools={{"shift", "ctrl", "cmd"}, "R"},
+  frontDevTools = { { "shift", "ctrl", "cmd" }, "R" },
 })
 
 -- local shift_ctrl_cmd_a = browserWindowFronters.keyFrontEmail
@@ -493,7 +499,7 @@ appTapMeld:start(appTapAttach)
 --   - We'll regard <Cmd-F> as one of the "untouchables", along with
 --     <Cmd-Q>, <Cmd-W>, <Cmd-Y>, and <Cmd-Z>.
 --   - And we'll learn to live with <Shift-Alt-F> to open Finder.
-local shift_alt_f = hs.hotkey.bind({"shift", "alt"}, "F", function()
+local shift_alt_f = hs.hotkey.bind({ "shift", "alt" }, "F", function()
   hs.application.launchOrFocus("Finder")
 end)
 
@@ -506,7 +512,7 @@ ignore_hotkey_slack(shift_alt_f)
 -- MacVim foregrounder/opener
 
 -- BNDNG: <Cmd-Backtick> (<Cmd-`>)
-local cmd_backtick = hs.hotkey.bind({"cmd"}, "`", function()
+local cmd_backtick = hs.hotkey.bind({ "cmd" }, "`", function()
   -- Front long-running nvim TUI (running in, e.g., Alacritty).
   --
   -- - USYNC: This is my LazyVim setup I use for development:
@@ -539,7 +545,7 @@ local cmd_backtick = hs.hotkey.bind({"cmd"}, "`", function()
 end)
 
 -- BNDNG: <Cmd-Backtick> (<Cmd-`>)
-local ctrl_backtick = hs.hotkey.bind({"ctrl"}, "`", function()
+local ctrl_backtick = hs.hotkey.bind({ "ctrl" }, "`", function()
   -- - USYNC: The is the classic nvim-depoxy setup I use for notes
   --   (at least until I port those feature into my LazyVim setup):
   --     DEPOXY_NVIM_ALTERNATE="🦢"
@@ -562,7 +568,7 @@ end)
 -- A third instance of Neovim with a dedicated raise binding...
 -- - Nuthin: <Ctrl-1> doesn't work (emits "1" into nvim or terminal).
 --     local ctrl_one = hs.hotkey.bind({"ctrl"}, "1", function()
-local ctrl_one = hs.hotkey.bind({"ctrl", "cmd"}, "`", function()
+local ctrl_one = hs.hotkey.bind({ "ctrl", "cmd" }, "`", function()
   -- USYNC: DEPOXY_NVIM_TRICHOTOMY="🐝"
   -- - FTREQ: We should shell out here and read DEPOXY_NVIM_TRICHOTOMY
   --   from ~/.config/depoxy/depoxyrc — for now, hardcoded window name.
@@ -574,7 +580,7 @@ end)
 -- Slack foregrounder/opener
 
 -- BNDNG: <Shift-Ctrl-Cmd-F>
-local shift_ctrl_cmd_f = hs.hotkey.bind({"shift", "ctrl", "cmd"}, "F", function()
+local shift_ctrl_cmd_f = hs.hotkey.bind({ "shift", "ctrl", "cmd" }, "F", function()
   minimizeAndHideWindows:launchOrFocusOrMinimize("Slack")
 end)
 
@@ -583,7 +589,7 @@ end)
 -- GnuCash foregrounder/opener
 
 -- BNDNG: <Shift-Ctrl-Cmd-G>
-local shift_ctrl_cmd_g = hs.hotkey.bind({"shift", "ctrl", "cmd"}, "G", function()
+local shift_ctrl_cmd_g = hs.hotkey.bind({ "shift", "ctrl", "cmd" }, "G", function()
   hs.application.launchOrFocus("GnuCash")
 end)
 
@@ -592,7 +598,7 @@ end)
 -- Spotify foregrounder/๏קєภer
 
 -- BNDNG: <Shift-Ctrl-Cmd-X>
-local shift_ctrl_cmd_x = hs.hotkey.bind({"shift", "ctrl", "cmd"}, "X", function()
+local shift_ctrl_cmd_x = hs.hotkey.bind({ "shift", "ctrl", "cmd" }, "X", function()
   minimizeAndHideWindows:launchOrFocusOrMinimize("Spotify")
 end)
 
@@ -602,7 +608,7 @@ end)
 -- - Mnemonic: *Edit* (I know, "edit" could mean so many things! Esp. text "editor").
 
 -- BNDNG: <Shift-Ctrl-Cmd-E>
-local shift_ctrl_cmd_e = hs.hotkey.bind({"shift", "ctrl", "cmd"}, "E", function()
+local shift_ctrl_cmd_e = hs.hotkey.bind({ "shift", "ctrl", "cmd" }, "E", function()
   hs.application.launchOrFocus("LibreOffice")
 end)
 
@@ -615,11 +621,11 @@ dateTimeSnips = hs.loadSpoon("DateTimeSnips")
 
 dateTimeSnips:bindHotkeys({
   -- BNDNG: <Cmd-Minus> (<Cmd-->)
-  snipISODateToday={{"cmd"}, "-"},
+  snipISODateToday = { { "cmd" }, "-" },
   -- BNDNG: <Ctrl-Cmd-Semicolon> (<Ctrl-Cmd-;>)
-  snipISODateTimeNormal={{"ctrl", "cmd"}, ";"},
+  snipISODateTimeNormal = { { "ctrl", "cmd" }, ";" },
   -- BNDNG: <Ctrl-Cmd-Quote> (<Ctrl-Cmd-SingleQuote>, <Ctrl-Cmd-Apostrophe>, <Ctrl-Cmd-'>)
-  snipISODateTimeDashed={{"ctrl", "cmd"}, "'"},
+  snipISODateTimeDashed = { { "ctrl", "cmd" }, "'" },
 })
 
 -- local cmd_hyphen = dateTimeSnips.keySnipISODateToday
@@ -638,13 +644,13 @@ dateTimeSnips:bindHotkeys({
 --   Called `pwgen23` found locally in DepoXy env. at:
 --     ~/.kit/sh/home-fries/lib/alias/alias_pwgen.sh
 -- BNDNG: <Cmd-Alt-P>
-local cmd_alt_p = hs.hotkey.bind({"cmd", "alt"}, "P", function()
-  local task = hs.task.new(
-    "/bin/dash",
-    nil,
-    function() return false end,
-    { "-c", 'printf "%s" "$(/opt/homebrew/bin/pwgen 2 1 | tr -d "\n" ; /opt/homebrew/bin/pwgen -n 21 -s -N 1 -y | tr -d "\n" ; /opt/homebrew/bin/pwgen 2 1)" | pbcopy' }
-  )
+local cmd_alt_p = hs.hotkey.bind({ "cmd", "alt" }, "P", function()
+  local task = hs.task.new("/bin/dash", nil, function()
+    return false
+  end, {
+    "-c",
+    'printf "%s" "$(/opt/homebrew/bin/pwgen 2 1 | tr -d "\n" ; /opt/homebrew/bin/pwgen -n 21 -s -N 1 -y | tr -d "\n" ; /opt/homebrew/bin/pwgen 2 1)" | pbcopy',
+  })
   task:start()
 end)
 
@@ -675,7 +681,7 @@ appWindowChooser:bindHotkeys({
   --     times while writing this comment).
   --  show_chooser={{"ctrl"}, "Space"}
   --  show_chooser={{"shift"}, "Space"}
-  show_chooser={{"shift", "ctrl"}, "Space"}
+  show_chooser = { { "shift", "ctrl" }, "Space" },
 })
 
 appWindowChooser:start()
@@ -756,7 +762,7 @@ aClock = hs.loadSpoon("AClock")
 -- BNDNG: <Ctrl-Alt-C>
 -- - Complements <Ctrl-Alt-D> Show Desktop, which might reveal GeekTool
 --   geeklet(s), if you put any there (as suggested by DepoXy setup docs).
-local ctrl_alt_c = hs.hotkey.bind({"ctrl", "alt"}, "c", function()
+local ctrl_alt_c = hs.hotkey.bind({ "ctrl", "alt" }, "c", function()
   -- ALTLY: spoon.AClock:toggleShow()
   aClock:toggleShow()
 end)
@@ -767,10 +773,10 @@ end)
 -- but then don't remember how to hide again (and I rarely, if ever,
 -- show the Dock this way).
 -- - MAYBE: Find a Spoon for this?
-local cmd_alt_d = hs.hotkey.bind({"cmd", "alt"}, "D", function()
+local cmd_alt_d = hs.hotkey.bind({ "cmd", "alt" }, "D", function()
   local app = hs.application.frontmostApplication()
 
-  hs.eventtap.keyStroke({"cmd", "alt"}, "D", app)
+  hs.eventtap.keyStroke({ "cmd", "alt" }, "D", app)
 
   hs.alert.show("Press <Cmd-Alt-D> again to toggle Dock visibilty")
 end)
@@ -784,7 +790,7 @@ local killTrepidation = hs.loadSpoon("KillTrepidly")
 
 killTrepidation:bindHotkeys({
   -- BNDNG: <Ctrl-Q>
-  kill={{"ctrl"}, "Q"},
+  kill = { { "ctrl" }, "Q" },
 })
 
 -- local ctrl_q = killTrepidation.keyKill
@@ -911,7 +917,9 @@ appTapDisableHotkeys:disableAllHotkeysForApp(appTapAttach, "Code")
 --       end
 
 file_exists = function(path)
-  if type(path) ~= "string" then return false end
+  if type(path) ~= "string" then
+    return false
+  end
 
   local file = io.open(path, "r")
 
@@ -919,19 +927,19 @@ file_exists = function(path)
 end
 
 load_config = function(dir, base)
-  local sep = sep or package.config:sub(1,1)
+  local sep = sep or package.config:sub(1, 1)
 
-  local path = dir..sep..base..".lua"
+  local path = dir .. sep .. base .. ".lua"
 
   if file_exists(path) then
-    package.path = package.path .. ";" .. dir..sep.."?.lua"
+    package.path = package.path .. ";" .. dir .. sep .. "?.lua"
 
     require(base)
   end
 end
 
 load_configs = function(sep)
-  local sep = sep or package.config:sub(1,1)
+  local sep = sep or package.config:sub(1, 1)
 
   -- CXREF: ~/.depoxy/ambers/home/.hammerspoon/depoxy-hs.lua
   load_config(dxy_cfg_dir, "depoxy-hs")
@@ -943,4 +951,3 @@ end
 load_configs()
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-
