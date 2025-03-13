@@ -87,7 +87,7 @@ obj.license = "MIT - https://opensource.org/licenses/MIT"
 --- Variable
 --- Logger object used within the Spoon. Can be accessed to set the default
 ---   log level for the messages coming from the Spoon.
-obj.logger = hs.logger.new('NeverLoseFocus')
+obj.logger = hs.logger.new("NeverLoseFocus")
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
@@ -103,7 +103,7 @@ obj.trace = false
 --     obj.logger.setLogLevel("debug")
 --     obj.logger.d(msg)
 function obj:debug(msg, force)
-  if (self.trace or force) then
+  if self.trace or force then
     -- You could also/instead show an overlay alert:
     --  hs.alert.show(msg)
     print(msg)
@@ -196,12 +196,9 @@ function obj:mruAppsTrackUnfocused(win, app_name, event)
   -- Not so fast! (See comment above.)
   local delay_secs = 0.2
 
-  hs.timer.doAfter(
-    delay_secs,
-    function()
-      self:mruAppsTrackUnfocusedCallback(win, app_name, event)
-    end
-  )
+  hs.timer.doAfter(delay_secs, function()
+    self:mruAppsTrackUnfocusedCallback(win, app_name, event)
+  end)
 end
 
 function obj:mruAppsTrackUnfocusedCallback(win, app_name, event)
@@ -214,7 +211,7 @@ function obj:mruAppsTrackUnfocusedCallback(win, app_name, event)
   -- IDGIT: Hammerspoon reports different numbers of #viz_wins after you
   -- close the Conole window. 10. 29. 25. 35. All over the place.
   -- - So ignore the visibleWindows() count for Hammerspoon.
-  if ((#viz_wins > 0) and not (self:isAppExcluded(app_name))) then
+  if (#viz_wins > 0) and not (self:isAppExcluded(app_name)) then
     self:debug("- App still has visible windows")
   else
     -- The app has no more visible windows, so it's no longer
@@ -237,7 +234,7 @@ function obj:mruAppsTrackUnfocusedCallback(win, app_name, event)
       -- TRACK: Just curious if visibleWindows XOR focusedWindow.
       self:debugCompare_visibleWindows_And_focusedWindow(the_app)
 
-      if ((focused_win == nil) or self:isAppExcluded(mru_app)) then
+      if (focused_win == nil) or self:isAppExcluded(mru_app) then
         table.remove(self.mru_apps, self.lua_array_first_element)
         mru_app = self.mru_apps[self.lua_array_first_element]
       else
@@ -254,30 +251,30 @@ function obj:mruAppsTrackUnfocusedCallback(win, app_name, event)
       if self.inspireMe then
         local quotes = {
           "You have no focus!",
-          "Clarity affords focus",  -- Thomas Leonard [who?]
+          "Clarity affords focus", -- Thomas Leonard [who?]
           "Never lose focus",
-          "If you're going through hell,\nkeep going",  -- Winston Churchill
+          "If you're going through hell,\nkeep going", -- Winston Churchill
           -- "Concentrate all your thoughts upon the work in hand" /
-          "The sun’s rays do not burn\nuntil brought to a focus",  -- Alexander Graham Bell
-          "If you want to make your dreams come true,\nthe first thing you have to do is wake up",  -- J.M. Power
-          "Concentrate: You can’t have it all",  -- Twyla Tharp
-          "Concentration is a fine antidote to anxiety",  -- Jack Nicklaus
+          "The sun’s rays do not burn\nuntil brought to a focus", -- Alexander Graham Bell
+          "If you want to make your dreams come true,\nthe first thing you have to do is wake up", -- J.M. Power
+          "Concentrate: You can’t have it all", -- Twyla Tharp
+          "Concentration is a fine antidote to anxiety", -- Jack Nicklaus
           "It is during our darkest moments\nthat we must focus to see the light", -- Aristotle Onassis
           "You can't depend on your eyes\nwhen your imagination is out of focus", -- Mark Twain
-          "The ego is nothing other than\nthe focus of conscious attention",  -- Alan Watts
-          "Planets move in ellipses\nwith the Sun at one focus",  -- Johannes Kepler
-          "The focus of subjectivity\nis a distorting mirror",  -- Hans-Georg Gadamer
-          "If you just focus\non the smallest details,\nyou never get\nthe big picture right",  -- Leroy Hood
-          "Focus 90% of your time on solutions and\nonly 10% of your time on problems",  -- Anthony J. D'Angelo
+          "The ego is nothing other than\nthe focus of conscious attention", -- Alan Watts
+          "Planets move in ellipses\nwith the Sun at one focus", -- Johannes Kepler
+          "The focus of subjectivity\nis a distorting mirror", -- Hans-Georg Gadamer
+          "If you just focus\non the smallest details,\nyou never get\nthe big picture right", -- Leroy Hood
+          "Focus 90% of your time on solutions and\nonly 10% of your time on problems", -- Anthony J. D'Angelo
           -- "Rage has such focus.\nIt can't go on forever,\nbut it's invigorating",  -- Siri Hustvedt
-          "Focus on doing the right things\ninstead of a bunch of things",  -- Mike Krieger
-          "If you want to survive\nthe zombie apocalypse,\nyou need to focus on\nincreasing your stamina",  -- Tom Payne
-          "Who cares about winning?\nWe should focus on serving",  -- Justin Trudeau
-          "The more you focus,\nthe more that focus\nbecomes a habit",  -- Charles Duhigg
-          "There's nothing like desperation\nto sharpen your sense of focus",  -- Thomas Newman
-          "Our focus is on outputs\nrather than inputs",  -- Stephen Cambone
-          "Shoot a few scenes out of focus.\nI want to win the foreign film award",  -- Billy Wilder
-          "Selective amnesia is a good thing to have.\nSo is good focus",  -- Adam Vinatieri
+          "Focus on doing the right things\ninstead of a bunch of things", -- Mike Krieger
+          "If you want to survive\nthe zombie apocalypse,\nyou need to focus on\nincreasing your stamina", -- Tom Payne
+          "Who cares about winning?\nWe should focus on serving", -- Justin Trudeau
+          "The more you focus,\nthe more that focus\nbecomes a habit", -- Charles Duhigg
+          "There's nothing like desperation\nto sharpen your sense of focus", -- Thomas Newman
+          "Our focus is on outputs\nrather than inputs", -- Stephen Cambone
+          "Shoot a few scenes out of focus.\nI want to win the foreign film award", -- Billy Wilder
+          "Selective amnesia is a good thing to have.\nSo is good focus", -- Adam Vinatieri
           -- "Each feature I make is my focus at that time",  -- Richard King
         }
         local randQuote = math.random(#quotes)
@@ -292,7 +289,8 @@ end
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 function obj:isAppExcluded(app_name)
-  local is_excluded = (false
+  local is_excluded = (
+    false
     or (app_name == "Hammerspoon")
     -- What Hammerspoon sometimes reports for the Console window,
     -- but not always... hrmm.
@@ -345,14 +343,14 @@ function obj:debugCompare_visibleWindows_And_focusedWindow(the_app)
   local viz_wins = the_app:visibleWindows()
   local focused_win = the_app:focusedWindow()
 
-  if (
-    ((#viz_wins == 0) and (focused_win ~= nil))
-    or ((#viz_wins > 0) and (focused_win == nil))
-  ) then
+  if ((#viz_wins == 0) and (focused_win ~= nil)) or ((#viz_wins > 0) and (focused_win == nil)) then
     local always_print = true
 
     self:debug("GAFFE: focusedWindow and visibleWindows mismatch:", always_print)
-    self:debug(" - focusedWindow: " .. (focusedWindow and focusedWindow:title() or "nil"), always_print)
+    self:debug(
+      " - focusedWindow: " .. (focusedWindow and focusedWindow:title() or "nil"),
+      always_print
+    )
     self:debug(" - visibleWindows: " .. hs.inspect(viz_wins), always_print)
   end
 end
@@ -363,6 +361,7 @@ end
 function obj:indexOf(array, value)
   for i, v in ipairs(array) do
     if v == value then
+      --
 
       return i
     end
@@ -374,22 +373,15 @@ end
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 function obj:start()
-  self.all_windows_filter:subscribe(
-    hs.window.filter.windowUnfocused,
-    function(win, app_name, event)
-      self:mruAppsTrackUnfocused(win, app_name, event)
-    end
-  )
+  self.all_windows_filter:subscribe(hs.window.filter.windowUnfocused, function(win, app_name, event)
+    self:mruAppsTrackUnfocused(win, app_name, event)
+  end)
 
-  self.all_windows_filter:subscribe(
-    hs.window.filter.windowFocused,
-    function(win, app_name, event)
-      self:mruAppsTrackFocused(win, app_name, event)
-    end
-  )
+  self.all_windows_filter:subscribe(hs.window.filter.windowFocused, function(win, app_name, event)
+    self:mruAppsTrackFocused(win, app_name, event)
+  end)
 end
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 return obj
-
