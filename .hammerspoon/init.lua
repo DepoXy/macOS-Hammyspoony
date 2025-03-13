@@ -746,7 +746,8 @@ end
 
 local neverLoseFocus = hs.loadSpoon("NeverLoseFocus")
 
-neverLoseFocus.inspireMe = true
+-- neverLoseFocus.inspireMe = true
+neverLoseFocus.inspireMe = false
 
 neverLoseFocus:start()
 
