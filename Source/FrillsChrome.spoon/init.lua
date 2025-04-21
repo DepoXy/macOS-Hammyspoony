@@ -83,7 +83,7 @@ function obj:makeNewChromeWindow(profile)
   local task = hs.task.new(
     "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
     function()
-      local chrome_app = hs.application.get("Google Chrome")
+      chrome_app = hs.application.get("Google Chrome")
       if chrome_app then
         chrome_app:setFrontmost()
       end
