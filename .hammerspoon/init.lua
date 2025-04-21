@@ -275,17 +275,17 @@ appTapSlack:start(appTapAttach)
 -- CXREF:
 -- ~/.kit/mOS/macOS-Hammyspoony/Source/FrillsChrome.spoon/init.lua
 
-frillsChrome = hs.loadSpoon("FrillsChrome")
+FrillsChrome = hs.loadSpoon("FrillsChrome")
 
-frillsChrome:bindHotkeys({
+FrillsChrome:bindHotkeys({
   -- BNDNG: <Cmd-T>
   newChromeWindow = { { "cmd" }, "T" },
   -- BNDNG: <Shift-Cmd-T>
   frontChromeWindow = { { "shift", "cmd" }, "T" },
 })
 
-local cmd_t = frillsChrome.keyNewChromeWindow
-local shift_cmd_t = frillsChrome.keyFrontChromeWindow
+local cmd_t = FrillsChrome.keyNewChromeWindow
+local shift_cmd_t = FrillsChrome.keyFrontChromeWindow
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
@@ -830,8 +830,8 @@ local allHotkeys = {
   frillsAlacrittyAndTerminal.keyAlacrittyForegrounderOpener,
   frillsAlacrittyAndTerminal.keyTerminalNewWindow,
   -- Spoon: FrillsChrome
-  frillsChrome.keyNewChromeWindow,
-  frillsChrome.keyFrontChromeWindow,
+  FrillsChrome.keyNewChromeWindow,
+  FrillsChrome.keyFrontChromeWindow,
   -- Spoon: BrowserWindowFronters
   browserWindowFronters.keyFrontEmail,
   browserWindowFronters.keyFrontChats,

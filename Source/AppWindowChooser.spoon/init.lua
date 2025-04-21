@@ -297,7 +297,7 @@ function obj:ctrlSpaceCompletionFn(chosen)
     if chosen.win then
       chosen.win:raise():focus()
     else
-      frillsChrome:makeNewChromeWindow()
+      FrillsChrome:makeNewChromeWindow()
     end
   end
 end
