@@ -129,7 +129,7 @@ obj.license = "MIT - https://opensource.org/licenses/MIT"
 --- Variable
 --- Logger object used within the Spoon. Can be accessed to set the default
 ---   log level for the messages coming from the Spoon.
-obj.logger = hs.logger.new('AppWindowChooser')
+obj.logger = hs.logger.new("AppWindowChooser")
 
 -- Internal variable: Key binding for showing the chooser
 obj.key_show_chooser = nil
@@ -195,6 +195,7 @@ function obj:refreshChoices()
   local app = hs.application.get(self.appName)
 
   if not app then
+    --
 
     return nil
   end
@@ -203,12 +204,9 @@ function obj:refreshChoices()
 
   local app_windows = app:allWindows()
 
-  local sorted_wins = self:pairsByKeys(
-    app_windows,
-    function(lhs, rhs)
-      return self:cmpWindowTitles(lhs, rhs, app_windows)
-    end
-  )
+  local sorted_wins = self:pairsByKeys(app_windows, function(lhs, rhs)
+    return self:cmpWindowTitles(lhs, rhs, app_windows)
+  end)
 
   self:addChoice(choices, "» New Window", nil)
 
@@ -275,7 +273,7 @@ function obj:addChoice(choices, title, win)
     -- ["text"] = win:title(),
     ["text"] = hs.styledtext.new(title, {
       -- font = { size = 18, },
-      font = { size = 14, },
+      font = { size = 14 },
       -- REFER: https://github.com/Hammerspoon/hammerspoon/blob/master/extensions/drawing/color/drawing_color.lua#L170
       -- color = hs.drawing.color.definedCollections.hammerspoon.white,
       -- color = hs.drawing.color.definedCollections.x11.whitesmoke,
@@ -354,16 +352,13 @@ end
 --- * show_chooser - show the app window chooser
 function obj:bindHotkeys(mapping)
   if mapping["show_chooser"] then
-    if (self.key_show_chooser) then
+    if self.key_show_chooser then
       self.key_show_chooser:delete()
     end
 
-  self.key_show_chooser = hs.hotkey.bindSpec(
-    mapping["show_chooser"],
-    function()
+    self.key_show_chooser = hs.hotkey.bindSpec(mapping["show_chooser"], function()
       self:toggleChooser()
-    end
-  )
+    end)
   end
 end
 
@@ -380,11 +375,9 @@ end
 --- Parameters:
 ---  * None
 function obj:start()
-  self.winChooser = hs.chooser.new(
-    function(chosen)
-      self:ctrlSpaceCompletionFn(chosen)
-    end
-  )
+  self.winChooser = hs.chooser.new(function(chosen)
+    self:ctrlSpaceCompletionFn(chosen)
+  end)
 
   -- The placeholderText is what's shown in the query text field
   -- until the user types a query. So there's not really any reason
@@ -405,4 +398,3 @@ end
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 return obj
-
