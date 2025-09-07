@@ -164,7 +164,41 @@ app_shortcuts_customize_gnucash_all() {
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ #
 
 slather_macos_defaults_hammyspoony() {
+  local dry_run=false
+
+  # ***
+
+  while [ "$1" != '' ]; do
+    case $1 in
+    --dry-run)
+      dry_run=true
+      shift
+      ;;
+    *) shift ;;
+    esac
+  done
+
+  # ***
+
+  if ${dry_run}; then
+    fake_it
+  fi
+
+  # ***
+
   app_shortcuts_customize_gnucash
+}
+
+# ***
+
+fake_it() {
+  fg_skyblue() { printf "\033[38;2;135;175;255m"; }
+  attr_reset() { printf "\033[0m"; }
+  highlight() { printf "%s" "$(fg_skyblue)$1$(attr_reset)"; }
+
+  defaults() {
+    echo "  $(highlight "defaults") $@"
+  }
 }
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
