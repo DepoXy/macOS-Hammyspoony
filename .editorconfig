@@ -4,5 +4,12 @@ root = true
 indent_style = space
 indent_size = 2
 max_line_length = 100
-# stylua ignores this directive...
+# NO_OP: stylua ignores this directive.
+insert_final_newline = true
+
+[*.sh]
+indent_style = space
+indent_size = 2
+max_line_length = 100
+# NO_OP: shfmt ignores this directive.
 insert_final_newline = true
