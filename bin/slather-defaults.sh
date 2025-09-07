@@ -43,7 +43,7 @@ CRUMB_APP_SHORTCUTS="Keyboard: Keyboard Shortcuts...: App Shortcuts"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
-app_shortcuts_customize_gnucash () {
+app_shortcuts_customize_gnucash() {
   app_shortcuts_customize_gnucash_menu_gnucash
   app_shortcuts_customize_gnucash_menu_file
   app_shortcuts_customize_gnucash_menu_edit
@@ -59,7 +59,7 @@ app_shortcuts_customize_gnucash () {
 }
 
 # So weird they don't spell it "GnuCash" in the menus (or the appname, Gnucash.app).
-app_shortcuts_customize_gnucash_menu_gnucash () {
+app_shortcuts_customize_gnucash_menu_gnucash() {
   # ISOFF/2024-10-05: <Cmd-Q> is not *that* difficult to press (it's not as
   # annoying as, e.g., <Cmd-C>), and author is at least slowly relenting on
   # the <Cmd-Q> -> <Ctrl-Q> remapping.
@@ -75,7 +75,7 @@ app_shortcuts_customize_gnucash_menu_gnucash () {
   :
 }
 
-app_shortcuts_customize_gnucash_menu_file () {
+app_shortcuts_customize_gnucash_menu_file() {
   echo "${CRUMB_APP_SHORTCUTS}: Gnucash.app: “File > New File”: Cmd-N → Ctrl-N"
   echo "${CRUMB_APP_SHORTCUTS}: Gnucash.app: “File > Open...”: Cmd-O → Ctrl-O"
   echo "${CRUMB_APP_SHORTCUTS}: Gnucash.app: “File > Save”: Cmd-S → Ctrl-S"
@@ -85,7 +85,7 @@ app_shortcuts_customize_gnucash_menu_file () {
   echo "${CRUMB_APP_SHORTCUTS}: Gnucash.app: “File > Close”: Cmd-W → Ctrl-W"
 }
 
-app_shortcuts_customize_gnucash_menu_edit () {
+app_shortcuts_customize_gnucash_menu_edit() {
   # Skip (set by KE): Cut, Copy, Paste
   echo "${CRUMB_APP_SHORTCUTS}: Gnucash.app: “Edit > Edit Account”: Cmd-E → Ctrl-E"
   # echo "${CRUMB_APP_SHORTCUTS}: Gnucash.app: “Edit > Delete Account”: Backspace → ???"
@@ -93,39 +93,39 @@ app_shortcuts_customize_gnucash_menu_edit () {
   echo "${CRUMB_APP_SHORTCUTS}: Gnucash.app: “Edit > Find...”: Cmd-F → Ctrl-F"
 }
 
-app_shortcuts_customize_gnucash_menu_view () {
+app_shortcuts_customize_gnucash_menu_view() {
   # echo "${CRUMB_APP_SHORTCUTS}: Gnucash.app: “View > Show All Tabs”: Shift-Cmd-\ → ???"
   echo "${CRUMB_APP_SHORTCUTS}: Gnucash.app: “View > Refresh”: Cmd-R → Ctrl-R"
   # echo "${CRUMB_APP_SHORTCUTS}: Gnucash.app: “View > Enter Full Screen”: Globe-F → impossible!"
 }
 
-app_shortcuts_customize_gnucash_menu_actions () {
+app_shortcuts_customize_gnucash_menu_actions() {
   echo "${CRUMB_APP_SHORTCUTS}: Gnucash.app: “Actions > Transfer...”: Cmd-T → Ctrl-T"
 }
 
-app_shortcuts_customize_gnucash_menu_business () {
+app_shortcuts_customize_gnucash_menu_business() {
   : # None
 }
 
-app_shortcuts_customize_gnucash_menu_reports () {
+app_shortcuts_customize_gnucash_menu_reports() {
   : # None
 }
 
-app_shortcuts_customize_gnucash_menu_tools () {
+app_shortcuts_customize_gnucash_menu_tools() {
   : # None
 }
 
-app_shortcuts_customize_gnucash_menu_windows () {
+app_shortcuts_customize_gnucash_menu_windows() {
   : # echo "${CRUMB_APP_SHORTCUTS}: Gnucash.app: “Windows > Show Previous Tab”: Shift-Ctrl-Right → ???"
   : # echo "${CRUMB_APP_SHORTCUTS}: Gnucash.app: “Windows > Show Next Tab”: Ctrl-Right → ???"
 }
 
-app_shortcuts_customize_gnucash_menu_help () {
+app_shortcuts_customize_gnucash_menu_help() {
   : # echo "${CRUMB_APP_SHORTCUTS}: Gnucash.app: “Help > Tutorial and Concepts Guide”: Ctrl-Cmd-H → ???"
   : # echo "${CRUMB_APP_SHORTCUTS}: Gnucash.app: “Help > Contents”: F1 → ???"
 }
 
-app_shortcuts_customize_gnucash_all () {
+app_shortcuts_customize_gnucash_all() {
   # The list order matches the menu order (and echo order you see above).
   # - HSTRY/2024-08-06: Preserved because this is first time I originated
   #   defaults in code, as opposed to adding the keys via System Settings
@@ -163,35 +163,35 @@ app_shortcuts_customize_gnucash_all () {
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ #
 
-slather_macos_defaults_hammyspoony () {
+slather_macos_defaults_hammyspoony() {
   app_shortcuts_customize_gnucash
 }
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 # @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ #
 
-clear_traps () {
+clear_traps() {
   trap - EXIT INT
 }
 
-set_traps () {
+set_traps() {
   trap -- trap_exit EXIT
   trap -- trap_int INT
 }
 
-exit_0 () {
+exit_0() {
   clear_traps
 
   exit 0
 }
 
-exit_1 () {
+exit_1() {
   clear_traps
 
   exit 1
 }
 
-trap_exit () {
+trap_exit() {
   clear_traps
 
   # USAGE: Alert on unexpected error path, so you can add happy path.
@@ -201,7 +201,7 @@ trap_exit () {
   exit 2
 }
 
-trap_int () {
+trap_int() {
   clear_traps
 
   exit 3
@@ -209,7 +209,7 @@ trap_int () {
 
 # ***
 
-main () {
+main() {
   set -e
 
   set_traps
@@ -223,4 +223,3 @@ if [ "$0" = "${BASH_SOURCE[0]}" ]; then
   # Being executed.
   main "$@"
 fi
-
