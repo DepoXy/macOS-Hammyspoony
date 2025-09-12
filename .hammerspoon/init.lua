@@ -307,6 +307,8 @@ browserWindowFronters:bindHotkeys({
   -- BNDNG: <Shift-Ctrl-Cmd-A>
   frontEmail = { { "shift", "ctrl", "cmd" }, "A" },
   -- BNDNG: <Shift-Ctrl-Cmd-S>
+  -- - REFER: browserWindowFrontOrOpen:
+  -- ~/.kit/mOS/macOS-Hammyspoony/Source/BrowserWindowFronters.spoon/init.lua @ 191
   frontChats = { { "shift", "ctrl", "cmd" }, "S" },
   -- BNDNG: <Shift-Ctrl-Cmd-P>
   frontPowerThesaurus = { { "shift", "ctrl", "cmd" }, "P" },
@@ -620,10 +622,13 @@ end)
 dateTimeSnips = hs.loadSpoon("DateTimeSnips")
 
 dateTimeSnips:bindHotkeys({
+  -- FRMAT: +%Y-%m-%d
   -- BNDNG: <Cmd-Minus> (<Cmd-->)
   snipISODateToday = { { "cmd" }, "-" },
+  -- FRMAT: +%Y-%m-%d %H:%M
   -- BNDNG: <Ctrl-Cmd-Semicolon> (<Ctrl-Cmd-;>)
   snipISODateTimeNormal = { { "ctrl", "cmd" }, ";" },
+  -- FRMAT: +%Y-%m-%d-%H-%M
   -- BNDNG: <Ctrl-Cmd-Quote> (<Ctrl-Cmd-SingleQuote>, <Ctrl-Cmd-Apostrophe>, <Ctrl-Cmd-'>)
   snipISODateTimeDashed = { { "ctrl", "cmd" }, "'" },
 })
