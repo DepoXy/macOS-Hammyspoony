@@ -280,8 +280,25 @@ FrillsChrome = hs.loadSpoon("FrillsChrome")
 FrillsChrome:bindHotkeys({
   -- BNDNG: <Cmd-T>
   newChromeWindow = { { "cmd" }, "T" },
-  -- BNDNG: <Shift-Cmd-T>
-  frontChromeWindow = { { "shift", "cmd" }, "T" },
+  -- HSTRY/2025-09-01: Author prev. used <Shift-Cmd-T> to front Chrome.
+  -- - But <Shift-Cmd-T> blocks Firefox binding for *Open Most Recently
+  --   Closed Tab* (and using eventtap to map <Shift-Ctrl-T> to
+  --   <Shift-Cmd-T> sends command to Hammerspoon; or at least
+  --   newKeyEvent does (DUNNO: Can you send key event to app and *not*
+  --   have it processed by Hammerspoon?)).
+  -- - So changing binding to <Shift-Ctrl-W>, which AFAIK is not currently
+  --   mapped to anything else in macOS, nor Hammyspoony; though I'm unsure
+  --   if this is a common Application binding, e.g., for alternative "close"
+  --   behaviors, such as how <Shift-Ctrl-S> is usually "Save As...".
+  --   - <Shift-Cmd-W> is also, at least on an English keyboard, easier to
+  --     press with one hand, and, if you're like the author, you might
+  --     appreciate this convenience if you often bop between your editor
+  --     and a browser window.
+  --   - ALTLY: Note that <Ctrl-Alt-T> also available, but that's a bit
+  --     of a stretch on the fingers, and not as convenient for an oft-
+  --     used keybinding.
+  -- BNDNG: <Shift-Cmd-W>
+  frontChromeWindow = { { "shift", "cmd" }, "W" },
 })
 
 local cmd_t = FrillsChrome.keyNewChromeWindow
