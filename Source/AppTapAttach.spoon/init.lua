@@ -21,7 +21,7 @@ obj.license = "MIT - https://opensource.org/licenses/MIT"
 --- Variable
 --- - Logger object used within the Spoon. Can be accessed to set
 ---   the default log level for the messages coming from the Spoon.
-obj.logger = hs.logger.new('AppTapAttach')
+obj.logger = hs.logger.new("AppTapAttach")
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
@@ -42,7 +42,7 @@ obj.trace = false
 ---         2024-10-23 18:41:05:          AppTapAtta:     I'm indented oh so much!
 ---       (There might be a way to adjust this, but author hasn't checked.)
 function obj:debug(msg, force)
-  if (self.trace or force) then
+  if self.trace or force then
     print(msg)
   end
 end
@@ -156,6 +156,7 @@ obj.timerDelaySecs = 0.2
 --   5 — hs.application.watcher.activated
 --   6 — hs.application.watcher.deactivated
 
+-- stylua: ignore
 obj.eventTypeName = {
   [hs.application.watcher.launching]    = "launching  ",
   [hs.application.watcher.launched]     = "launched   ",
@@ -163,7 +164,7 @@ obj.eventTypeName = {
   [hs.application.watcher.hidden]       = "hidden     ",
   [hs.application.watcher.unhidden]     = "unhidden   ",
   [hs.application.watcher.activated]    = "activated  ",
-  [hs.application.watcher.deactivated]  = "deactivated"
+  [hs.application.watcher.deactivated]  = "deactivated",
 }
 
 obj.appActivatedOrDeactivated = {
@@ -209,7 +210,8 @@ function obj:appWatcherWatch(appName, eventType, _theApp)
   end
 
   -- Guard clause aka short circuit.
-  if not (self.namelessAppWasDeactivated and eventType == hs.application.watcher.terminated)
+  if
+    not (self.namelessAppWasDeactivated and eventType == hs.application.watcher.terminated)
     and not self.appActivatedOrDeactivated[eventType]
   then
     self:debug("APPTAP: " .. self.eventTypeName[eventType] .. " / dont care / " .. appNameStr)
@@ -269,6 +271,7 @@ function obj:beginStateTransition(appName, eventType, appNameStr)
 
   -- But don't wait for another event to happen, in case it doesn't
   -- (though author has never seen it not happen).
+  -- stylua: ignore
   self.activateDeactiveTimer = hs.timer.doAfter(
     self.timerDelaySecs,
     function()
@@ -335,11 +338,11 @@ end
 --   APPTAP: activated   / 1st event / Google Chrome
 --   APPTAP: deactivated / 2nd event / Alacritty
 --   APPTAP: launching   / dont care / Google Chrome
---   
+--
 --   APPTAP: activated   / 1st event / Google Chrome
 --   APPTAP: deactivated / 2nd event / Google Chrome
 --   APPTAP: launched    / dont care / Google Chrome
---   
+--
 --   APPTAP: activated   / 1st event / Google Chrome
 --   APPTAP: deactivated / --- event / (nameless!)
 --   APPTAP: terminated  / 2nd event / Google Chrome
@@ -359,13 +362,14 @@ obj.namelessDeactivatedOkay = {
 function obj:resetNamelessAppWasDeactivated(appNameStr)
   if not self.namelessAppWasDeactivated then
 
+    -- stylua: ignore
     return
   end
 
   self.namelessAppWasDeactivated = false
 
   if not self.namelessDeactivatedOkay[appNameStr] then
-    local alertMsg = "APPTAP: GAFFE: Unexpected nameless app deactivated: \"" .. appNameStr .. "\""
+    local alertMsg = 'APPTAP: GAFFE: Unexpected nameless app deactivated: "' .. appNameStr .. '"'
 
     self:debug(alertMsg)
 
@@ -386,22 +390,24 @@ end
 
 function obj:changeEventtapsAndAlertIfFollowUpEventNotReceivedSoon(eventType, appNameStr)
   -- This is an unexpected path.
+  -- stylua: ignore
   local previousEventName = string.gsub(
     self.eventTypeName[self.previousEventType] or "(no prev. event)",
     "%s+$",
     ""
   )
 
+  -- stylua: ignore
   local message = ("APPTAP: ALERT: Got "
-      .. previousEventName
-      .. " but not its follow-up"
-      .. " / App: " .. appNameStr
-      .. " / Delay: " .. self.timerDelaySecs .. " mins."
+    .. previousEventName
+    .. " but not its follow-up"
+    .. " / App: " .. appNameStr
+    .. " / Delay: " .. self.timerDelaySecs .. " mins."
   )
 
   self:debug(message)
 
-  local timeoutSecs = 5  -- Defaults 2 secs.
+  local timeoutSecs = 5 -- Defaults 2 secs.
 
   hs.alert.show(message, timeoutSecs)
 
@@ -421,6 +427,7 @@ end
 --- Parameters:
 ---  * (none)
 function obj:start()
+  -- stylua: ignore
   self.appWatcher = hs.application.watcher.new(
     function(appName, eventType, theApp)
       self:appWatcherWatch(appName, eventType, theApp)
@@ -433,4 +440,3 @@ end
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 return obj
-
