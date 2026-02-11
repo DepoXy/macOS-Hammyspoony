@@ -21,7 +21,7 @@ obj.license = "MIT - https://opensource.org/licenses/MIT"
 --- Variable
 --- - Logger object used within the Spoon. Can be accessed to set
 ---   the default log level for the messages coming from the Spoon.
-obj.logger = hs.logger.new('AppTapSlack')
+obj.logger = hs.logger.new("AppTapSlack")
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
@@ -32,8 +32,9 @@ obj.logger = hs.logger.new('AppTapSlack')
 -- doesn't change anything.
 
 function obj:gnucashShortcutsGetEventtap()
+  -- stylua: ignore
   return hs.eventtap.new(
-    {hs.eventtap.event.types.keyDown},
+    { hs.eventtap.event.types.keyDown },
     function(e)
       -- USAGE: Uncomment to debug/pry:
       --    local unmodified = false
@@ -43,7 +44,7 @@ function obj:gnucashShortcutsGetEventtap()
 
       -- For each menu item, returns true to delete original event,
       -- followed by the new event.
-      if e:getFlags():containExactly({"ctrl"}) then
+      if e:getFlags():containExactly({ "ctrl" }) then
         if false then
 
         -- -- Gnucash > Quit Gnucash
@@ -52,55 +53,55 @@ function obj:gnucashShortcutsGetEventtap()
 
         -- File > New File
         elseif e:getKeyCode() == hs.keycodes.map["n"] then
-          return true, {hs.eventtap.event.newKeyEvent({"cmd"}, hs.keycodes.map["n"], true)}
+          return true, { hs.eventtap.event.newKeyEvent({ "cmd" }, hs.keycodes.map["n"], true) }
 
         -- File > Open...
         elseif e:getKeyCode() == hs.keycodes.map["o"] then
-          return true, {hs.eventtap.event.newKeyEvent({"cmd"}, hs.keycodes.map["o"], true)}
+          return true, { hs.eventtap.event.newKeyEvent({ "cmd" }, hs.keycodes.map["o"], true) }
 
         -- File > Save
         elseif e:getKeyCode() == hs.keycodes.map["s"] then
-          return true, {hs.eventtap.event.newKeyEvent({"cmd"}, hs.keycodes.map["s"], true)}
+          return true, { hs.eventtap.event.newKeyEvent({ "cmd" }, hs.keycodes.map["s"], true) }
 
         -- File > "Print...
         elseif e:getKeyCode() == hs.keycodes.map["p"] then
-          return true, {hs.eventtap.event.newKeyEvent({"cmd"}, hs.keycodes.map["p"], true)}
+          return true, { hs.eventtap.event.newKeyEvent({ "cmd" }, hs.keycodes.map["p"], true) }
 
         -- File > Close
         elseif e:getKeyCode() == hs.keycodes.map["w"] then
-          return true, {hs.eventtap.event.newKeyEvent({"cmd"}, hs.keycodes.map["w"], true)}
+          return true, { hs.eventtap.event.newKeyEvent({ "cmd" }, hs.keycodes.map["w"], true) }
 
         -- Edit > Edit Account
         elseif e:getKeyCode() == hs.keycodes.map["e"] then
-          return true, {hs.eventtap.event.newKeyEvent({"cmd"}, hs.keycodes.map["e"], true)}
+          return true, { hs.eventtap.event.newKeyEvent({ "cmd" }, hs.keycodes.map["e"], true) }
 
         -- Edit > Find Account
         elseif e:getKeyCode() == hs.keycodes.map["i"] then
-          return true, {hs.eventtap.event.newKeyEvent({"cmd"}, hs.keycodes.map["i"], true)}
+          return true, { hs.eventtap.event.newKeyEvent({ "cmd" }, hs.keycodes.map["i"], true) }
 
         -- Edit > Find ...
         elseif e:getKeyCode() == hs.keycodes.map["f"] then
-          return true, {hs.eventtap.event.newKeyEvent({"cmd"}, hs.keycodes.map["f"], true)}
+          return true, { hs.eventtap.event.newKeyEvent({ "cmd" }, hs.keycodes.map["f"], true) }
 
         -- View > Refresh
         elseif e:getKeyCode() == hs.keycodes.map["r"] then
-          return true, {hs.eventtap.event.newKeyEvent({"cmd"}, hs.keycodes.map["r"], true)}
+          return true, { hs.eventtap.event.newKeyEvent({ "cmd" }, hs.keycodes.map["r"], true) }
 
         -- Action > Transfer...
         elseif e:getKeyCode() == hs.keycodes.map["t"] then
-          return true, {hs.eventtap.event.newKeyEvent({"cmd"}, hs.keycodes.map["t"], true)}
+          return true, { hs.eventtap.event.newKeyEvent({ "cmd" }, hs.keycodes.map["t"], true) }
 
         end
-      elseif e:getFlags():containExactly({"shift", "ctrl"}) then
+      elseif e:getFlags():containExactly({ "shift", "ctrl" }) then
         if false then
 
         -- File > Save As...
         elseif e:getKeyCode() == hs.keycodes.map["s"] then
-          return true, {hs.eventtap.event.newKeyEvent({"shift", "cmd"}, hs.keycodes.map["s"], true)}
+          return true, { hs.eventtap.event.newKeyEvent({ "shift", "cmd" }, hs.keycodes.map["s"], true) }
 
         -- File > Print Setup
         elseif e:getKeyCode() == hs.keycodes.map["p"] then
-          return true, {hs.eventtap.event.newKeyEvent({"shift", "cmd"}, hs.keycodes.map["p"], true)}
+          return true, { hs.eventtap.event.newKeyEvent({ "shift", "cmd" }, hs.keycodes.map["p"], true) }
 
         end
       end
@@ -122,6 +123,7 @@ end
 function obj:start(appTapAttach)
   -- SAVVY: Its Application name is "Gnucash" and not "GnuCash"
   -- like the window title, its documentation, or website, etc.
+  -- stylua: ignore
   appTapAttach:registerApptap(
     "Gnucash",
     self.gnucashShortcutsGetEventtap
@@ -131,4 +133,3 @@ end
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 return obj
-
