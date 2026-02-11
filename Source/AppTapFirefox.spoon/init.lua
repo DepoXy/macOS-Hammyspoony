@@ -21,7 +21,7 @@ obj.license = "MIT - https://opensource.org/licenses/MIT"
 --- Variable
 --- - Logger object used within the Spoon. Can be accessed to set
 ---   the default log level for the messages coming from the Spoon.
-obj.logger = hs.logger.new('AppTapFirefox')
+obj.logger = hs.logger.new("AppTapFirefox")
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
@@ -43,6 +43,7 @@ obj.enable["DeleteBackwardUsingCtrlW"] = true
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 function obj:firefoxGetEventtap()
+  -- stylua: ignore
   return hs.eventtap.new(
     {
       hs.eventtap.event.types.keyDown,
@@ -75,22 +76,22 @@ function obj:firefoxGetEventtapCallback(e)
     -- Delete backward on <Ctrl-W>
     if keyCode == hs.keycodes.map["w"] then
       if self.enable["DeleteBackwardUsingCtrlW"] then
-        if eventFlags:containExactly({"ctrl"}) then
+        if eventFlags:containExactly({ "ctrl" }) then
           -- Emit <Alt-Backspace> (common macOS delete back-word)
-          return true, {hs.eventtap.event.newKeyEvent({"alt"}, hs.keycodes.map["delete"], true)}
-        elseif eventFlags:containExactly({"alt"}) then
+          return true, { hs.eventtap.event.newKeyEvent({ "alt" }, hs.keycodes.map["delete"], true) }
+        elseif eventFlags:containExactly({ "alt" }) then
           -- Emit <Cmd-W>
           -- SAVVY: Using NSUserKeyEquivalents doesn't totally work to rebind
           -- "Close Window" — When an input control has focus (e.g., the location
           -- bar), <Alt-W> enters "∑". So we use an eventtap here instead of
           -- using `defaults write org.mozilla.firefox NSUserKeyEquivalents`.
-          return true, {hs.eventtap.event.newKeyEvent({"cmd"}, hs.keycodes.map["w"], true)}
+          return true, { hs.eventtap.event.newKeyEvent({ "cmd" }, hs.keycodes.map["w"], true) }
         else
           return false
         end
       end
     end
-  end  -- eventType == hs.eventtap.event.types.keyDown
+  end -- eventType == hs.eventtap.event.types.keyDown
 
   -- Return false to propagate event.
   return false
@@ -105,6 +106,7 @@ end
 --- Parameters:
 ---  * appTapAttach
 function obj:start(appTapAttach)
+  -- stylua: ignore
   appTapAttach:registerApptap(
     "Firefox",
     function()
@@ -116,4 +118,3 @@ end
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 return obj
-
