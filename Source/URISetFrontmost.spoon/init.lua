@@ -21,7 +21,7 @@ obj.license = "MIT - https://opensource.org/licenses/MIT"
 --- Variable
 --- - Logger object used within the Spoon. Can be accessed to set
 ---   the default log level for the messages coming from the Spoon.
-obj.logger = hs.logger.new('URISetFrontmost')
+obj.logger = hs.logger.new("URISetFrontmost")
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
@@ -48,7 +48,7 @@ obj.logger = hs.logger.new('URISetFrontmost')
 -- (i.e., it'll open a new Chrome window behind the active window; and
 -- once that starts happening, only quitting and restarting Chrome seems
 -- to make it work again).
--- 
+--
 -- - `sensible-open` relies on the `open` command, e.g.,
 --
 --     open -na 'Google Chrome' --args --new-window <URL>
@@ -86,20 +86,20 @@ obj.logger = hs.logger.new('URISetFrontmost')
 obj.uriSetFrontmost = function(eventName, params)
   print("eventName: " .. hs.inspect(eventName))
   print("params: " .. hs.inspect(params))
-  if params['app'] ~= nil then
-    local app = hs.application(params['app'])
+  if params["app"] ~= nil then
+    local app = hs.application(params["app"])
 
     if app then
       -- DUNNO: Is this similar to `front_win:raise():focus()`?
       app:setFrontmost()
     else
-      hs.alert.show('No such app: ' .. params['app'])
+      hs.alert.show("No such app: " .. params["app"])
     end
-  elseif params['name'] ~= nil then
+  elseif params["name"] ~= nil then
     -- SAVVY: The search is not case-sensitive.
-    local found_win = hs.window.find(params['name'])
+    local found_win = hs.window.find(params["name"])
 
-    if found_win  then
+    if found_win then
       local front_win = nil
 
       local toggle = false
@@ -113,7 +113,7 @@ obj.uriSetFrontmost = function(eventName, params)
         front_win:minimize()
       end
     else
-      hs.alert.show('No such window: ' .. params['name'])
+      hs.alert.show("No such window: " .. params["name"])
     end
   end
 end
@@ -133,4 +133,3 @@ end
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 return obj
-
