@@ -21,7 +21,7 @@ obj.license = "MIT - https://opensource.org/licenses/MIT"
 --- Variable
 --- - Logger object used within the Spoon. Can be accessed to set
 ---   the default log level for the messages coming from the Spoon.
-obj.logger = hs.logger.new('AppTapLibreoffice')
+obj.logger = hs.logger.new("AppTapLibreoffice")
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
@@ -51,6 +51,7 @@ obj.logger = hs.logger.new('AppTapLibreoffice')
 --   to use DefaultKeyBinding.dict, so why start now].
 
 function obj:libreofficeGetEventtap()
+  -- stylua: ignore
   return hs.eventtap.new(
     {
       hs.eventtap.event.types.keyDown,
@@ -64,24 +65,24 @@ function obj:libreofficeGetEventtap()
         local keyCode = e:getKeyCode()
         local eventFlags = e:getFlags()
 
-        if e:getFlags():containExactly({"ctrl"}) then
+        if e:getFlags():containExactly({ "ctrl" }) then
           if false then
 
           -- *** LibreOffice
 
           -- Most keybindings are changed via `defaults`:
           --   default write org.libreoffice.script NSUserKeyEquivalents '{ ... }'
-          -- - See also its own Tools > Customize... > Keyboard Shortcuts 
+          -- - See also its own Tools > Customize... > Keyboard Shortcuts
 
           -- *** Edit
 
           -- Edit > Undo, Edit > Undo: Paste clipboard, etc.
           elseif keyCode == hs.keycodes.map["z"] then
-            return true, {hs.eventtap.event.newKeyEvent({"cmd"}, hs.keycodes.map["z"], true)}
+            return true, { hs.eventtap.event.newKeyEvent({ "cmd" }, hs.keycodes.map["z"], true) }
 
-            -- Edit > Redo, Edit > Redo: Replace: “segmentation ” → “C” [sic!?], etc.
+          -- Edit > Redo, Edit > Redo: Replace: “segmentation ” → “C” [sic!?], etc.
           elseif keyCode == hs.keycodes.map["y"] then
-            return true, {hs.eventtap.event.newKeyEvent({"cmd"}, hs.keycodes.map["y"], true)}
+            return true, { hs.eventtap.event.newKeyEvent({ "cmd" }, hs.keycodes.map["y"], true) }
 
           end
         end
@@ -135,6 +136,7 @@ end
 --- Parameters:
 ---  * appTapAttach
 function obj:start(appTapAttach)
+  -- stylua: ignore
   appTapAttach:registerApptap(
     "LibreOffice",
     self.libreofficeGetEventtap
@@ -144,4 +146,3 @@ end
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 return obj
-
