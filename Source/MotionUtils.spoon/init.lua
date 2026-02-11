@@ -25,7 +25,7 @@ obj.license = "MIT - https://opensource.org/licenses/MIT"
 --- Variable
 --- - Logger object used within the Spoon. Can be accessed to set
 ---   the default log level for the messages coming from the Spoon.
-obj.logger = hs.logger.new('MotionUtils')
+obj.logger = hs.logger.new("MotionUtils")
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
@@ -56,18 +56,19 @@ obj.logger = hs.logger.new('MotionUtils')
 --   https://github.com/Hammerspoon/hammerspoon/issues/3101
 
 function obj:newKeyEventForLeftRight(keyCode, eventFlags)
-  if (keyCode == hs.keycodes.map["left"]
-    or keyCode == hs.keycodes.map["right"])
+  -- stylua: ignore
+  if keyCode == hs.keycodes.map["left"]
+    or keyCode == hs.keycodes.map["right"]
   then
     -- Note that modifiers includes "fn" when arrow key pressed.
-    if eventFlags:containExactly({"ctrl", "fn"}) then
-      return true, {hs.eventtap.event.newKeyEvent({"alt", "fn"}, keyCode, true)}
-    elseif eventFlags:containExactly({"shift", "ctrl", "fn"}) then
-      return true, {hs.eventtap.event.newKeyEvent({"shift", "alt", "fn"}, keyCode, true)}
-    elseif eventFlags:containExactly({"alt", "fn"}) then
-      return true, {hs.eventtap.event.newKeyEvent({"cmd", "fn"}, keyCode, true)}
-    elseif eventFlags:containExactly({"shift", "alt", "fn"}) then
-      return true, {hs.eventtap.event.newKeyEvent({"shift", "cmd", "fn"}, keyCode, true)}
+    if eventFlags:containExactly({ "ctrl", "fn" }) then
+      return true, { hs.eventtap.event.newKeyEvent({ "alt", "fn" }, keyCode, true) }
+    elseif eventFlags:containExactly({ "shift", "ctrl", "fn" }) then
+      return true, { hs.eventtap.event.newKeyEvent({ "shift", "alt", "fn" }, keyCode, true) }
+    elseif eventFlags:containExactly({ "alt", "fn" }) then
+      return true, { hs.eventtap.event.newKeyEvent({ "cmd", "fn" }, keyCode, true) }
+    elseif eventFlags:containExactly({ "shift", "alt", "fn" }) then
+      return true, { hs.eventtap.event.newKeyEvent({ "shift", "cmd", "fn" }, keyCode, true) }
     end
   end
 
@@ -128,11 +129,13 @@ end
 --   <Alt-PageUp>/<Alt-PageDown> (and does not select text).
 
 function obj:newKeyEventForHomeEnd(keyCode, eventFlags)
-  if (keyCode == hs.keycodes.map["home"]
-    or keyCode == hs.keycodes.map["end"])
+  -- stylua: ignore
+  if keyCode == hs.keycodes.map["home"]
+    or keyCode == hs.keycodes.map["end"]
   then
-    if eventFlags:containExactly({"fn"})
-      or eventFlags:containExactly({"shift", "fn"})
+    -- stylua: ignore
+    if eventFlags:containExactly({ "fn" })
+      or eventFlags:containExactly({ "shift", "fn" })
     then
       local leftOrRight
       if keyCode == hs.keycodes.map["home"] then
@@ -141,9 +144,9 @@ function obj:newKeyEventForHomeEnd(keyCode, eventFlags)
         leftOrRight = hs.keycodes.map["right"]
       end
 
-      local newFlags = tableUtils:tableKeys(tableUtils:tableMerge(eventFlags, {["cmd"] = true}))
+      local newFlags = tableUtils:tableKeys(tableUtils:tableMerge(eventFlags, { ["cmd"] = true }))
 
-      return true, {hs.eventtap.event.newKeyEvent(newFlags, leftOrRight, true)}
+      return true, { hs.eventtap.event.newKeyEvent(newFlags, leftOrRight, true) }
     else
       -- Works in LibreOffice, but not in Chrome:
       --   return true, {hs.eventtap.event.newKeyEvent({"fn"}, keyCode, true)}
@@ -157,10 +160,10 @@ function obj:newKeyEventForHomeEnd(keyCode, eventFlags)
         upOrDown = hs.keycodes.map["down"]
       end
 
-      if eventFlags:containExactly({"ctrl", "fn"}) then
-        return true, {hs.eventtap.event.newKeyEvent({"cmd", "fn"}, upOrDown, true)}
-      elseif eventFlags:containExactly({"shift", "ctrl", "fn"}) then
-        return true, {hs.eventtap.event.newKeyEvent({"shift", "cmd", "fn"}, upOrDown, true)}
+      if eventFlags:containExactly({ "ctrl", "fn" }) then
+        return true, { hs.eventtap.event.newKeyEvent({ "cmd", "fn" }, upOrDown, true) }
+      elseif eventFlags:containExactly({ "shift", "ctrl", "fn" }) then
+        return true, { hs.eventtap.event.newKeyEvent({ "shift", "cmd", "fn" }, upOrDown, true) }
       end
     end
   end
@@ -169,4 +172,3 @@ end
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 return obj
-
