@@ -21,7 +21,7 @@ obj.license = "MIT - https://opensource.org/licenses/MIT"
 --- Variable
 --- - Logger object used within the Spoon. Can be accessed to set
 ---   the default log level for the messages coming from the Spoon.
-obj.logger = hs.logger.new('AlacrittyAndTerminalConveniences')
+obj.logger = hs.logger.new("AlacrittyAndTerminalConveniences")
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
@@ -244,7 +244,7 @@ function obj:terminal_by_number_using_post_filter(win_num, win_hint, toggle)
     -- What's happening is illustrated by this call (but don't do this):
     --   local win1, win2, win3 = hs.window.find(prefix_pattern)
 
-    local term_apps = { Alacritty = true, iTerm2 = true, Terminal = true, }
+    local term_apps = { Alacritty = true, iTerm2 = true, Terminal = true }
 
     for _, win in pairs(wins) do
       local app_title = win:application():title()
@@ -303,11 +303,12 @@ end
 --   event to the app to run the (hidden) New Window <Cmd-N> menu item.
 
 function obj:alacrittyNewWindow()
+  -- stylua: ignore
   local task = hs.task.new(
     "/usr/bin/open",
     function(exit_code, stdout, stderr)
       -- Default timeout, opt. 3rd arg, is 200000 microsecs (200 msec).
-      hs.eventtap.keyStroke({"cmd"}, "N", hs.application.get("Alacritty"))
+      hs.eventtap.keyStroke({ "cmd" }, "N", hs.application.get("Alacritty"))
     end,
     function() return false end,
     { "-a", "alacritty" }
@@ -325,15 +326,16 @@ end
 -- - For the rare time you want to test Apple Terminal.app
 
 function obj:terminalNewWindow()
+  -- stylua: ignore
   local task = hs.task.new(
     "/usr/bin/osascript",
     nil,
     function() return false end,
     {
-      '-e', 'tell app "Terminal"',
-        '-e', 'do script ""',
-        '-e', 'activate',
-      '-e', 'end tell',
+      "-e", 'tell app "Terminal"',
+        "-e", 'do script ""',
+        "-e", "activate",
+      "-e", "end tell",
     }
   )
   task:start()
@@ -343,7 +345,7 @@ end
 
 function obj:bindHotkeyUnminimzeAllAlacrittyWindows(mapping)
   if mapping["unminimzeAllAlacrittyWindows"] then
-    if (self.keyUnminimzeAllAlacrittyWindows) then
+    if self.keyUnminimzeAllAlacrittyWindows then
       self.keyUnminimzeAllAlacrittyWindows:delete()
     end
 
@@ -358,17 +360,19 @@ end
 
 function obj:bindHotkeysAlacrittyWindowFronters1Through9(mapping)
   if mapping["alacrittyWindowFronters1Through9Prefix"] then
-    if (self.keysAlacrittyWindowFronters1Through9) then
+    if self.keysAlacrittyWindowFronters1Through9 then
+      -- stylua: ignore
       tableUtils:tableForEach(
         self.keysAlacrittyWindowFronters1Through9,
-        function (key, val) val:delete() end
+        function(key, val) val:delete() end
       )
     end
   end
 
   self.keysAlacrittyWindowFronters1Through9 = {}
 
-  for key in pairs({1, 2, 3, 4, 5, 6, 7, 8, 9}) do
+  for key in pairs({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }) do
+    -- stylua: ignore
     table.insert(
       self.keysAlacrittyWindowFronters1Through9,
       -- MAYBE: Use hs.hotkey.bindSpec instead?
@@ -385,10 +389,11 @@ end
 
 function obj:bindHotkeysAlacrittyNewWindow(mapping)
   if mapping["alacrittyNewWindow"] then
-    if (self.keyAlacrittyNewWindow) then
+    if self.keyAlacrittyNewWindow then
       self.keyAlacrittyNewWindow:delete()
     end
 
+    -- stylua: ignore
     self.keyAlacrittyNewWindow = hs.hotkey.bindSpec(
       mapping["alacrittyNewWindow"],
       function()
@@ -400,7 +405,7 @@ end
 
 function obj:bindHotkeysAlacrittyForegrounderOpener(mapping)
   if mapping["alacrittyForegrounderOpener"] then
-    if (self.keyAlacrittyForegrounderOpener) then
+    if self.keyAlacrittyForegrounderOpener then
       self.keyAlacrittyForegrounderOpener:delete()
     end
 
@@ -415,10 +420,11 @@ end
 
 function obj:bindHotkeysTerminalNewWindow(mapping)
   if mapping["terminalNewWindow"] then
-    if (self.keyTerminalNewWindow) then
+    if self.keyTerminalNewWindow then
       self.keyTerminalNewWindow:delete()
     end
 
+    -- stylua: ignore
     self.keyTerminalNewWindow = hs.hotkey.bindSpec(
       mapping["terminalNewWindow"],
       function()
@@ -450,4 +456,3 @@ end
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 return obj
-
