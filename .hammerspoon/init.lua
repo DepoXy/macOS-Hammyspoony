@@ -511,7 +511,7 @@ appTapMeld:start(appTapAttach)
 -- BNDNG: <Shift-Alt-F>
 -- - HSTRY/2024-12-06: Previously <Cmd-F>, but once Github source
 --   view in Chrome has focus, it steals <Ctrl-F>, <Shift-Ctrl-F>,
---   <Alt-F>, and <Shift-Alt-F>. So the macOS-onboarder `defaults`
+--   <Alt-F>, and <Shift-Alt-F>. So the macOS-GNOME-onboarder `defaults`
 --   setting leaves Chrome Find at <Cmd-F>. (And <Cmd-F> was the
 --   author's traditional `caja` opener on Linux, which I later
 --   mapped to Finder-open on macOS. Ah, well, it had a good run.)

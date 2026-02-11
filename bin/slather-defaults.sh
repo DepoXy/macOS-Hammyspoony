@@ -38,7 +38,7 @@
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #
 
 # COPYD: From adjacent DepoXy project:
-#   ~/.kit/mOS/macOS-onboarder/bin/slather-defaults.sh
+#   ~/.kit/mOS/macOS-GNOME-onboarder/bin/slather-defaults.sh
 CRUMB_APP_SHORTCUTS="Keyboard: Keyboard Shortcuts...: App Shortcuts"
 
 # +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ #

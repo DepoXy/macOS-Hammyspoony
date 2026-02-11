@@ -51,7 +51,7 @@
 ---       and `defaults write ... NSUserKeyEquivalents` project,
 ---       in furtherance of the same goal:
 ---
----         https://github.com/DepoXy/macOS-onboarder#🏂
+---         https://github.com/DepoXy/macOS-GNOME-onboarder#🏂
 ---         https://github.com/DepoXy/macOS-Hammyspoony#🥄
 ---         https://github.com/DepoXy/Karabiner-Elephants#🐘
 ---
