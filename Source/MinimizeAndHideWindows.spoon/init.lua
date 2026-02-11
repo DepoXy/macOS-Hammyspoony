@@ -27,7 +27,7 @@ obj.license = "MIT - https://opensource.org/licenses/MIT"
 --- Variable
 --- - Logger object used within the Spoon. Can be accessed to set
 ---   the default log level for the messages coming from the Spoon.
-obj.logger = hs.logger.new('MinimizeAndHideWindows')
+obj.logger = hs.logger.new("MinimizeAndHideWindows")
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
@@ -233,10 +233,11 @@ end
 
 function obj:bindHotkeyAllButFrontmost(mapping)
   if mapping["allButFrontmost"] then
-    if (self.keyAllButFrontmost) then
+    if self.keyAllButFrontmost then
       self.keyAllButFrontmost:delete()
     end
 
+    -- stylua: ignore
     self.keyAllButFrontmost = hs.hotkey.bindSpec(
       mapping["allButFrontmost"],
       function()
@@ -248,10 +249,11 @@ end
 
 function obj:bindHotkeyAllWindows(mapping)
   if mapping["allWindows"] then
-    if (self.keyAllWindows) then
+    if self.keyAllWindows then
       self.keyAllWindows:delete()
     end
 
+    -- stylua: ignore
     self.keyAllWindows = hs.hotkey.bindSpec(
       mapping["allWindows"],
       function()
@@ -277,4 +279,3 @@ end
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 return obj
-
