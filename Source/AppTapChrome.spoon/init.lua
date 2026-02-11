@@ -21,7 +21,7 @@ obj.license = "MIT - https://opensource.org/licenses/MIT"
 --- Variable
 --- - Logger object used within the Spoon. Can be accessed to set
 ---   the default log level for the messages coming from the Spoon.
-obj.logger = hs.logger.new('AppTapChrome')
+obj.logger = hs.logger.new("AppTapChrome")
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
@@ -54,6 +54,7 @@ obj.enable["OpenLinkInNewTabUsingCtrlClick"] = true
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 function obj:chromeGetEventtap()
+  -- stylua: ignore
   return hs.eventtap.new(
     {
       hs.eventtap.event.types.keyDown,
@@ -85,14 +86,15 @@ function obj:chromeGetEventtapCallback(e)
 
     -- Delete backward on <Ctrl-W>
     if keyCode == hs.keycodes.map["w"] then
+       -- stylua: ignore
       if self.enable["DeleteBackwardUsingCtrlW"]
-        and eventFlags:containExactly({"ctrl"})
+        and eventFlags:containExactly({ "ctrl" })
       then
         -- SAVVY: <Ctrl-Backspace> works in location but not text input;
         --        <Alt-Backspace> works in any edit control, incl. locat.
 
         -- Emit <Alt-Backspace>
-        return true, {hs.eventtap.event.newKeyEvent({"alt"}, hs.keycodes.map["delete"], true)}
+        return true, { hs.eventtap.event.newKeyEvent({ "alt" }, hs.keycodes.map["delete"], true) }
       else
         return false
       end
@@ -104,17 +106,16 @@ function obj:chromeGetEventtapCallback(e)
     --     defaults write com.google.Chrome NSUserKeyEquivalents '{ ... }'
     --   we'll use the event tap for those Google Sheets bindings that we
     --   care about, and that won't interfere with normal Chrome bindings.
-    if eventFlags:containExactly({"ctrl"}) then
+    if eventFlags:containExactly({ "ctrl" }) then
       if false then
 
       -- Edit > Undo
       elseif keyCode == hs.keycodes.map["z"] then
-        return true, {hs.eventtap.event.newKeyEvent({"cmd"}, hs.keycodes.map["z"], true)}
+        return true, { hs.eventtap.event.newKeyEvent({ "cmd" }, hs.keycodes.map["z"], true) }
 
       -- Edit > Redo
       elseif keyCode == hs.keycodes.map["y"] then
-        return true, {hs.eventtap.event.newKeyEvent({"cmd"}, hs.keycodes.map["y"], true)}
-
+        return true, { hs.eventtap.event.newKeyEvent({ "cmd" }, hs.keycodes.map["y"], true) }
       end
     end
 
@@ -128,19 +129,20 @@ function obj:chromeGetEventtapCallback(e)
 
     -- Reload on <F5>/<Shift-F5>
     if keyCode == hs.keycodes.map["F5"] then
+      -- stylua: ignore
       if self.enable["ReloadThisPageUsingF5"]
-        and (eventFlags:containExactly({"fn"})
-          or eventFlags:containExactly({"shift", "fn"})
+        and (eventFlags:containExactly({ "fn" })
+          or eventFlags:containExactly({ "shift", "fn" })
         )
       then
         -- <F5>/<Shift-F5> → <Ctrl-R>/<Shift-Ctrl-R> (View > *Reload This Page*)
-        local withCtrl = tableUtils:tableMerge(eventFlags, {["ctrl"] = true})
+        local withCtrl = tableUtils:tableMerge(eventFlags, { ["ctrl"] = true })
         -- "Delete" the "fn" key (it goes with "F5", but not normal characters).
         withCtrl["fn"] = nil
         local newFlags = tableUtils:tableKeys(withCtrl)
 
         -- Emit <Ctrl-R> or <Shift-Ctrl-R>
-        return true, {hs.eventtap.event.newKeyEvent(newFlags, hs.keycodes.map["r"], true)}
+        return true, { hs.eventtap.event.newKeyEvent(newFlags, hs.keycodes.map["r"], true) }
       else
         return false
       end
@@ -148,12 +150,14 @@ function obj:chromeGetEventtapCallback(e)
 
     -- BWARE: See note above: Avoid race condition with other events
     -- caused by sussRoleOfElement() running slowly b/c AppleScript.
-    if true
+    if
+      true
       and keyCode ~= hs.keycodes.map["left"]
       and keyCode ~= hs.keycodes.map["right"]
       and keyCode ~= hs.keycodes.map["home"]
       and keyCode ~= hs.keycodes.map["end"]
     then
+      -- stylua: ignore
 
       return false
     end
@@ -173,6 +177,7 @@ function obj:chromeGetEventtapCallback(e)
       end
     end
 
+    -- stylua: ignore
     if not (
       self.enable["LinuxlikeLeftRightMotions"]
       or self.enable["LinuxlikeHomeEndMotions"]
@@ -225,20 +230,19 @@ function obj:chromeGetEventtapCallback(e)
         end
       end
     end
-  end  -- eventType == hs.eventtap.event.types.keyDown
+  end -- eventType == hs.eventtap.event.types.keyDown
 
   -- Process Mouse down/Mouse up events
+  -- stylua: ignore
   if eventType == hs.eventtap.event.types.leftMouseDown
     or eventType == hs.eventtap.event.types.leftMouseUp
   then
-
     -- Map <Ctrl-Click> to <Cmd-Click>, i.e., open link in new tab.
     -- - SAVVY: <Shift-Click> opens link in new window.
     if self.enable["OpenLinkInNewTabUsingCtrlClick"] then
-      if eventFlags:containExactly({"ctrl"}) then
-
+      if eventFlags:containExactly({ "ctrl" }) then
         -- Emit <Cmd-Click> at event location.
-        return true, {hs.eventtap.event.newMouseEvent(eventType, e:location(), {"cmd"})}
+        return true, { hs.eventtap.event.newMouseEvent(eventType, e:location(), { "cmd" }) }
       end
     end
   end
@@ -270,11 +274,11 @@ obj.textInputRoles = {
 
 function obj:sussRoleOfElement()
   local _success, roleOfElement, _rawOutOrErrorDict = hs.osascript.applescript(
-    "tell application \"System Events\"\n" ..
-    "  tell process \"Google Chrome\"\n" ..
-    "    role of value of attribute \"AXFocusedUIElement\"\n" ..
-    "  end tell\n" ..
-    "end tell\n"
+    'tell application "System Events"\n'
+      .. '  tell process "Google Chrome"\n'
+      .. '    role of value of attribute "AXFocusedUIElement"\n'
+      .. "  end tell\n"
+      .. "end tell\n"
   )
   -- print("roleOfElement: " .. hs.inspect(roleOfElement))
   -- print("_rawOutOrErrorDict: " .. hs.inspect(_rawOutOrErrorDict))
@@ -302,16 +306,17 @@ end
 -- So here we pick the command from the menu instead.
 
 function obj:processEventForLeftRight(cmdOrAlt, keyCode, eventFlags)
-  if eventFlags:containExactly({cmdOrAlt, "fn"})
+  -- stylua: ignore
+  if eventFlags:containExactly({ cmdOrAlt, "fn" })
     and (keyCode == hs.keycodes.map["left"]
       or keyCode == hs.keycodes.map["right"])
   then
     local app = hs.application.find("Google Chrome")
 
     if keyCode == hs.keycodes.map["left"] then
-      app:selectMenuItem({"History", "Back"})
+      app:selectMenuItem({ "History", "Back" })
     elseif keyCode == hs.keycodes.map["right"] then
-      app:selectMenuItem({"History", "Forward"})
+      app:selectMenuItem({ "History", "Forward" })
     end
 
     return true
@@ -327,6 +332,7 @@ end
 --- Parameters:
 ---  * appTapAttach
 function obj:start(appTapAttach)
+  -- stylua: ignore
   appTapAttach:registerApptap(
     "Google Chrome",
     function()
@@ -338,4 +344,3 @@ end
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 return obj
-
