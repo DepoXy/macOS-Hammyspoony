@@ -21,7 +21,7 @@ obj.license = "MIT - https://opensource.org/licenses/MIT"
 --- Variable
 --- - Logger object used within the Spoon. Can be accessed to set
 ---   the default log level for the messages coming from the Spoon.
-obj.logger = hs.logger.new('BrowserWindowFronters')
+obj.logger = hs.logger.new("BrowserWindowFronters")
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
@@ -46,7 +46,9 @@ function obj:chromeWithProfile(profile, url)
   local task = hs.task.new(
     "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
     nil,
-    function() return false end,
+    function()
+      return false
+    end,
     { "--profile-directory=" .. profile, "--new-window", url }
   )
   task:start()
@@ -81,7 +83,7 @@ end
 -- garbage-collected?
 --
 -- - I.e., not this?:
--- 
+--
 --     function browser_window_front_or_open(url, matches)
 --       ...
 --     end
@@ -103,7 +105,9 @@ function obj:browserWindowFrontOrOpen(url, profile, matches, toggle)
 
   for i = 1, #matches do
     win = hs.window(matches[i])
-    if win then break end
+    if win then
+      break
+    end
   end
 
   if win then
@@ -146,6 +150,7 @@ end
 function obj:frontEmail()
   local toggle = true
 
+  -- stylua: ignore
   self:browserWindowFrontOrOpen(
     "https://mail.google.com/mail/u/0/#inbox",
     {
@@ -178,6 +183,7 @@ end
 function obj:frontChats()
   local toggle = true
 
+  -- stylua: ignore
   self:browserWindowFrontOrOpen(
     "https://www.messenger.com/",
     {
@@ -196,6 +202,7 @@ end
 -- PowerThesaurus [browser window]
 
 function obj:frontPowerThesaurus()
+  -- stylua: ignore
   self:browserWindowFrontOrOpen(
     "https://www.powerthesaurus.org/",
     {
@@ -209,6 +216,7 @@ end
 -- Regex Dictionary by Lou Hevly [browser window]
 
 function obj:frontRegexDict()
+  -- stylua: ignore
   self:browserWindowFrontOrOpen(
     "https://www.visca.com/regexdict/",
     {
@@ -224,6 +232,7 @@ end
 -- - You must pop DevTools out into a separate window for this to work.
 
 function obj:frontDevTools()
+  -- stylua: ignore
   self:browserWindowFrontOrOpen(
     "",
     {
@@ -238,10 +247,11 @@ end
 
 function obj:bindHotkeyFrontEmail(mapping)
   if mapping["frontEmail"] then
-    if (self.keyFrontEmail) then
+    if self.keyFrontEmail then
       self.keyFrontEmail:delete()
     end
 
+    -- stylua: ignore
     self.keyFrontEmail = hs.hotkey.bindSpec(
       mapping["frontEmail"],
       function()
@@ -253,10 +263,11 @@ end
 
 function obj:bindHotkeyFrontChats(mapping)
   if mapping["frontChats"] then
-    if (self.keyFrontChats) then
+    if self.keyFrontChats then
       self.keyFrontChats:delete()
     end
 
+    -- stylua: ignore
     self.keyFrontChats = hs.hotkey.bindSpec(
       mapping["frontChats"],
       function()
@@ -268,10 +279,11 @@ end
 
 function obj:bindHotkeyFrontPowerThesaurus(mapping)
   if mapping["frontPowerThesaurus"] then
-    if (self.keyFrontPowerThesaurus) then
+    if self.keyFrontPowerThesaurus then
       self.keyFrontPowerThesaurus:delete()
     end
 
+    -- stylua: ignore
     self.keyFrontPowerThesaurus = hs.hotkey.bindSpec(
       mapping["frontPowerThesaurus"],
       function()
@@ -283,10 +295,11 @@ end
 
 function obj:bindHotkeyFrontRegexDict(mapping)
   if mapping["frontRegexDict"] then
-    if (self.keyFrontRegexDict) then
+    if self.keyFrontRegexDict then
       self.keyFrontRegexDict:delete()
     end
 
+    -- stylua: ignore
     self.keyFrontRegexDict = hs.hotkey.bindSpec(
       mapping["frontRegexDict"],
       function()
@@ -298,10 +311,11 @@ end
 
 function obj:bindHotkeyFrontDevTools(mapping)
   if mapping["frontDevTools"] then
-    if (self.keyFrontDevTools) then
+    if self.keyFrontDevTools then
       self.keyFrontDevTools:delete()
     end
 
+    -- stylua: ignore
     self.keyFrontDevTools = hs.hotkey.bindSpec(
       mapping["frontDevTools"],
       function()
@@ -317,11 +331,11 @@ end
 ---
 --- Parameters:
 ---  * mapping - A table containing hotkey objifier/key details for the following items:
----   * frontEmail — 
----   * frontChats — 
----   * frontPowerThesaurus — 
----   * frontRegexDict — 
----   * frontDevTools — 
+---   * frontEmail —
+---   * frontChats —
+---   * frontPowerThesaurus —
+---   * frontRegexDict —
+---   * frontDevTools —
 function obj:bindHotkeys(mapping)
   self:bindHotkeyFrontEmail(mapping)
   self:bindHotkeyFrontChats(mapping)
@@ -333,4 +347,3 @@ end
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 return obj
-
