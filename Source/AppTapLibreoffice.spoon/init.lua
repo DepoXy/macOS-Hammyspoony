@@ -7,6 +7,7 @@
 ---
 --- Download: [https://github.com/DepoXy/macOS-Hammyspoony/raw/release/Spoons/AppTapLibreoffice.spoon.zip](https://github.com/DepoXy/macOS-Hammyspoony/raw/release/Spoons/AppTapLibreoffice.spoon.zip)
 
+---@class AppTapLibreoffice
 local obj = {}
 obj.__index = obj
 

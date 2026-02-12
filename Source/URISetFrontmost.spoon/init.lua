@@ -7,6 +7,7 @@
 ---
 --- Download: [https://github.com/DepoXy/macOS-Hammyspoony/raw/release/Spoons/URISetFrontmost.spoon.zip](https://github.com/DepoXy/macOS-Hammyspoony/raw/release/Spoons/URISetFrontmost.spoon.zip)
 
+---@class URISetFrontmost
 local obj = {}
 obj.__index = obj
 

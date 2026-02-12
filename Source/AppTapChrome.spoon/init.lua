@@ -7,6 +7,7 @@
 ---
 --- Download: [https://github.com/DepoXy/macOS-Hammyspoony/raw/release/Spoons/AppTapChrome.spoon.zip](https://github.com/DepoXy/macOS-Hammyspoony/raw/release/Spoons/AppTapChrome.spoon.zip)
 
+---@class AppTapChrome
 local obj = {}
 obj.__index = obj
 

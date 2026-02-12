@@ -7,6 +7,7 @@
 ---
 --- Download: [https://github.com/DepoXy/macOS-Hammyspoony/raw/release/Spoons/AppTapDisableHotkeys.spoon.zip](https://github.com/DepoXy/macOS-Hammyspoony/raw/release/Spoons/AppTapDisableHotkeys.spoon.zip)
 
+---@class AppTapDisableHotkeys
 local obj = {}
 obj.__index = obj
 

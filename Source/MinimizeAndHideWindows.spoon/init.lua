@@ -13,6 +13,7 @@
 ---
 --- Download: [https://github.com/DepoXy/macOS-Hammyspoony/raw/release/Spoons/LinuxlikeCutCopyPaste.spoon.zip](https://github.com/DepoXy/macOS-Hammyspoony/raw/release/Spoons/LinuxlikeCutCopyPaste.spoon.zip)
 
+---@class MinimizeAndHideWindows
 local obj = {}
 obj.__index = obj
 

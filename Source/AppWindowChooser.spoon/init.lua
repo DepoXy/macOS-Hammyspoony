@@ -115,6 +115,7 @@
 
 --- Download: [https://github.com/DepoXy/macOS-Hammyspoony/raw/release/Spoons/AppWindowChooser.spoon.zip](https://github.com/DepoXy/macOS-Hammyspoony/raw/release/Spoons/AppWindowChooser.spoon.zip)
 
+---@class AppWindowChooser
 local obj = {}
 obj.__index = obj
 

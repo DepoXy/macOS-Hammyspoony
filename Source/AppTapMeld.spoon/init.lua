@@ -40,6 +40,7 @@
 ---
 --- Download: [https://github.com/DepoXy/macOS-Hammyspoony/raw/release/Spoons/AppTapMeld.spoon.zip](https://github.com/DepoXy/macOS-Hammyspoony/raw/release/Spoons/AppTapMeld.spoon.zip)
 
+---@class AppTapMeld
 local obj = {}
 obj.__index = obj
 

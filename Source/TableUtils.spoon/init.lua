@@ -11,6 +11,7 @@
 
 -- MAYBE/2024-10-12: Should this not be a Spoon?
 
+---@class TableUtils
 local obj = {}
 obj.__index = obj
 

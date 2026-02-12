@@ -7,6 +7,7 @@
 ---
 --- Download: [https://github.com/DepoXy/macOS-Hammyspoony/raw/release/Spoons/BrowserWindowFronters.spoon.zip](https://github.com/DepoXy/macOS-Hammyspoony/raw/release/Spoons/BrowserWindowFronters.spoon.zip)
 
+---@class BrowserWindowFronters
 local obj = {}
 obj.__index = obj
 

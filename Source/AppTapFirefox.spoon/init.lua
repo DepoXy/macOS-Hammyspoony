@@ -7,6 +7,7 @@
 ---
 --- Download: [https://github.com/DepoXy/macOS-Hammyspoony/raw/release/Spoons/AppTapFirefox.spoon.zip](https://github.com/DepoXy/macOS-Hammyspoony/raw/release/Spoons/AppTapFirefox.spoon.zip)
 
+---@class AppTapFirefox
 local obj = {}
 obj.__index = obj
 

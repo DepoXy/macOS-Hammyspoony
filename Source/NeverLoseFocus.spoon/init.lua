@@ -73,6 +73,7 @@
 ---     closing it (and don't open-close it immediately), this doesn't seem
 ---     to happen.
 
+---@class NeverLoseFocus
 local obj = {}
 obj.__index = obj
 

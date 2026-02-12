@@ -7,6 +7,7 @@
 ---
 --- Download: [https://github.com/DepoXy/macOS-Hammyspoony/raw/release/Spoons/DateTimeSnips.spoon.zip](https://github.com/DepoXy/macOS-Hammyspoony/raw/release/Spoons/DateTimeSnips.spoon.zip)
 
+---@class DateTimeSnips
 local obj = {}
 obj.__index = obj
 

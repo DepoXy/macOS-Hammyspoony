@@ -7,6 +7,7 @@
 ---
 --- Download: [https://github.com/DepoXy/macOS-Hammyspoony/raw/release/Spoons/AppTapSlack.spoon.zip](https://github.com/DepoXy/macOS-Hammyspoony/raw/release/Spoons/AppTapSlack.spoon.zip)
 
+---@class AppTapSlack
 local obj = {}
 obj.__index = obj
 

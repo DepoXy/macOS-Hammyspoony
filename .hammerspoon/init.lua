@@ -194,6 +194,7 @@ motionUtils = hs.loadSpoon("MotionUtils")
 -- CXREF:
 -- ~/.kit/mOS/macOS-Hammyspoony/Source/MinimizeAndHideWindows.spoon/init.lua
 
+---@type MinimizeAndHideWindows | nil
 local minimizeAndHideWindows = hs.loadSpoon("MinimizeAndHideWindows")
 
 minimizeAndHideWindows:bindHotkeys({
@@ -211,6 +212,7 @@ minimizeAndHideWindows:bindHotkeys({
 -- CXREF:
 -- ~/.kit/mOS/macOS-Hammyspoony/Source/FrillsAlacrittyAndTerminal.spoon/init.lua
 
+---@type FrillsAlacrittyAndTerminal | nil
 FrillsAlacrittyAndTerminal = hs.loadSpoon("FrillsAlacrittyAndTerminal")
 
 -- Make <Cmd-1> through <Cmd-9> accelerators togglable, e.g., so an
@@ -251,12 +253,14 @@ local cmd_0 = FrillsAlacrittyAndTerminal.keyAlacrittyNewWindow
 
 -- Define registerApptap, which the AppTap* Spoons use to wire their
 -- eventtap subscribers to specific applications.
+---@type AppTapAttach | nil
 appTapAttach = hs.loadSpoon("AppTapAttach")
 
 appTapAttach:start()
 
 -------
 
+---@type AppTapGnucash | nil
 local appTapGnucash = hs.loadSpoon("AppTapGnucash")
 
 appTapGnucash:start(appTapAttach)
@@ -266,6 +270,7 @@ appTapGnucash:start(appTapAttach)
 -- CXREF:
 -- ~/.kit/mOS/macOS-Hammyspoony/Source/AppTapAttach.spoon/init.lua
 
+---@type AppTapSlack | nil
 local appTapSlack = hs.loadSpoon("AppTapSlack")
 
 appTapSlack:start(appTapAttach)
@@ -275,6 +280,7 @@ appTapSlack:start(appTapAttach)
 -- CXREF:
 -- ~/.kit/mOS/macOS-Hammyspoony/Source/FrillsChrome.spoon/init.lua
 
+---@type FrillsChrome | nil
 FrillsChrome = hs.loadSpoon("FrillsChrome")
 
 FrillsChrome:bindHotkeys({
@@ -309,6 +315,7 @@ local shift_cmd_t = FrillsChrome.keyFrontChromeWindow
 -- CXREF:
 -- ~/.kit/mOS/macOS-Hammyspoony/Source/URISetFrontmost.spoon/init.lua
 
+---@type URISetFrontmost | nil
 local uriSetFrontmost = hs.loadSpoon("URISetFrontmost")
 
 uriSetFrontmost:start()
@@ -318,6 +325,7 @@ uriSetFrontmost:start()
 -- CXREF:
 -- ~/.kit/mOS/macOS-Hammyspoony/Source/BrowserWindowFronters.spoon/init.lua
 
+---@type BrowserWindowFronters | nil
 browserWindowFronters = hs.loadSpoon("BrowserWindowFronters")
 
 browserWindowFronters:bindHotkeys({
@@ -491,6 +499,7 @@ local vs_code_filter = hs.window.filter.new("Code")
 -- CXREF:
 -- ~/.kit/mOS/macOS-Hammyspoony/Source/AppTapLibreoffice.spoon/init.lua
 
+---@type AppTapLibreoffice | nil
 local appTapLibreoffice = hs.loadSpoon("AppTapLibreoffice")
 
 appTapLibreoffice:start(appTapAttach)
@@ -500,6 +509,7 @@ appTapLibreoffice:start(appTapAttach)
 -- CXREF:
 -- ~/.kit/mOS/macOS-Hammyspoony/Source/AppTapMeld.spoon/init.lua
 
+---@type AppTapMeld | nil
 local appTapMeld = hs.loadSpoon("AppTapMeld")
 
 appTapMeld:start(appTapAttach)
@@ -636,6 +646,7 @@ end)
 -- CXREF:
 -- ~/.kit/mOS/macOS-Hammyspoony/Source/DateTimeSnips.spoon/init.lua
 
+---@type DateTimeSnips | nil
 dateTimeSnips = hs.loadSpoon("DateTimeSnips")
 
 dateTimeSnips:bindHotkeys({
@@ -681,6 +692,7 @@ end)
 -- CXREF:
 -- ~/.kit/mOS/macOS-Hammyspoony/Source/AppWindowChooser.spoon/init.lua
 
+---@type AppWindowChooser | nil
 local appWindowChooser = hs.loadSpoon("AppWindowChooser")
 
 appWindowChooser.appName = "Google Chrome"
@@ -713,6 +725,7 @@ appWindowChooser:start()
 -- CXREF:
 -- ~/.kit/mOS/macOS-Hammyspoony/Source/AppTapChrome.spoon/init.lua
 
+---@type AppTapChrome | nil
 local appTapChrome = hs.loadSpoon("AppTapChrome")
 
 -- USAGE: "Salt to taste" — In lieu of `bindHotkeys`, feature toggles.
@@ -739,6 +752,7 @@ end
 -- CXREF:
 -- ~/.kit/mOS/macOS-Hammyspoony/Source/AppTapFirefox.spoon/init.lua
 
+---@type AppTapFirefox | nil
 local appTapFirefox = hs.loadSpoon("AppTapFirefox")
 
 appTapFirefox.enable["DeleteBackwardUsingCtrlW"] = true
@@ -809,6 +823,7 @@ end)
 -- CXREF:
 -- ~/.kit/mOS/macOS-Hammyspoony/Source/KillTrepidly.spoon/init.lua
 
+---@type KillTrepidly | nil
 local killTrepidation = hs.loadSpoon("KillTrepidly")
 
 killTrepidation:bindHotkeys({
@@ -882,6 +897,7 @@ local allHotkeys = {
   killTrepidation.keyKill,
 }
 
+---@type AppTapDisableHotkeys | nil
 appTapDisableHotkeys = hs.loadSpoon("AppTapDisableHotkeys")
 
 appTapDisableHotkeys:registerHotkeys(allHotkeys)
