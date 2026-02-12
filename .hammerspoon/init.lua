@@ -606,6 +606,7 @@ local cmd_backtick = hs.hotkey.bind({ "cmd" }, "`", function()
 end)
 
 -- BNDNG: <Ctrl-Backtick> (<Ctrl-`>)
+---@diagnostic disable-next-line: unused-local
 local ctrl_backtick = hs.hotkey.bind({ "ctrl" }, "`", function()
   -- - USYNC: The is the classic nvim-depoxy setup I use for notes
   --   (at least until I port those feature into my LazyVim setup):
@@ -629,6 +630,7 @@ end)
 -- A third instance of Neovim with a dedicated raise binding...
 -- - Nuthin: <Ctrl-1> doesn't work (emits "1" into nvim or terminal).
 --     local ctrl_one = hs.hotkey.bind({"ctrl"}, "1", function()
+---@diagnostic disable-next-line: unused-local
 local ctrl_one = hs.hotkey.bind({ "ctrl", "cmd" }, "`", function()
   -- USYNC: DEPOXY_NVIM_TRICHOTOMY="🐝"
   -- - FTREQ: We should shell out here and read DEPOXY_NVIM_TRICHOTOMY
@@ -812,6 +814,7 @@ end
 -- CXREF:
 -- ~/.kit/mOS/macOS-Hammyspoony/Source/NeverLoseFocus.spoon/init.lua
 
+---@type NeverLoseFocus | nil
 local neverLoseFocus = hs.loadSpoon("NeverLoseFocus")
 
 -- neverLoseFocus.inspireMe = true
