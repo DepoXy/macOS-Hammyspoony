@@ -211,13 +211,13 @@ minimizeAndHideWindows:bindHotkeys({
 -- CXREF:
 -- ~/.kit/mOS/macOS-Hammyspoony/Source/FrillsAlacrittyAndTerminal.spoon/init.lua
 
-frillsAlacrittyAndTerminal = hs.loadSpoon("FrillsAlacrittyAndTerminal")
+FrillsAlacrittyAndTerminal = hs.loadSpoon("FrillsAlacrittyAndTerminal")
 
 -- Make <Cmd-1> through <Cmd-9> accelerators togglable, e.g., so an
 -- accelerator twice will bring a terminal front, then minimize it.
-frillsAlacrittyAndTerminal.togglable = true
+FrillsAlacrittyAndTerminal.togglable = true
 
-frillsAlacrittyAndTerminal:bindHotkeys({
+FrillsAlacrittyAndTerminal:bindHotkeys({
   -- BNDNG: <Shift-Ctrl-Cmd-0>
   unminimzeAllAlacrittyWindows = { { "shift", "ctrl", "cmd" }, "0" },
   -- BNDNG/s: <Cmd-1>, <Cmd-2>, ..., <Cmd-9>
@@ -230,19 +230,19 @@ frillsAlacrittyAndTerminal:bindHotkeys({
   terminalNewWindow = { { "ctrl", "cmd" }, "0" },
 })
 
--- local shift_ctrl_cmd_0 = frillsAlacrittyAndTerminal.keyUnminimzeAllAlacrittyWindows
--- local cmd_1 = frillsAlacrittyAndTerminal.keysAlacrittyWindowFronters1Through9[1]
--- local cmd_2 = frillsAlacrittyAndTerminal.keysAlacrittyWindowFronters1Through9[2]
--- local cmd_3 = frillsAlacrittyAndTerminal.keysAlacrittyWindowFronters1Through9[3]
--- local cmd_4 = frillsAlacrittyAndTerminal.keysAlacrittyWindowFronters1Through9[4]
--- local cmd_5 = frillsAlacrittyAndTerminal.keysAlacrittyWindowFronters1Through9[5]
--- local cmd_6 = frillsAlacrittyAndTerminal.keysAlacrittyWindowFronters1Through9[6]
--- local cmd_7 = frillsAlacrittyAndTerminal.keysAlacrittyWindowFronters1Through9[7]
--- local cmd_8 = frillsAlacrittyAndTerminal.keysAlacrittyWindowFronters1Through9[8]
--- local cmd_9 = frillsAlacrittyAndTerminal.keysAlacrittyWindowFronters1Through9[9]
-local cmd_0 = frillsAlacrittyAndTerminal.keyAlacrittyNewWindow
--- local shift_cmd_0 = frillsAlacrittyAndTerminal.keyAlacrittyForegrounderOpener
--- local ctrl_cmd_0 = frillsAlacrittyAndTerminal.keyTerminalNewWindow
+-- local shift_ctrl_cmd_0 = FrillsAlacrittyAndTerminal.keyUnminimzeAllAlacrittyWindows
+-- local cmd_1 = FrillsAlacrittyAndTerminal.keysAlacrittyWindowFronters1Through9[1]
+-- local cmd_2 = FrillsAlacrittyAndTerminal.keysAlacrittyWindowFronters1Through9[2]
+-- local cmd_3 = FrillsAlacrittyAndTerminal.keysAlacrittyWindowFronters1Through9[3]
+-- local cmd_4 = FrillsAlacrittyAndTerminal.keysAlacrittyWindowFronters1Through9[4]
+-- local cmd_5 = FrillsAlacrittyAndTerminal.keysAlacrittyWindowFronters1Through9[5]
+-- local cmd_6 = FrillsAlacrittyAndTerminal.keysAlacrittyWindowFronters1Through9[6]
+-- local cmd_7 = FrillsAlacrittyAndTerminal.keysAlacrittyWindowFronters1Through9[7]
+-- local cmd_8 = FrillsAlacrittyAndTerminal.keysAlacrittyWindowFronters1Through9[8]
+-- local cmd_9 = FrillsAlacrittyAndTerminal.keysAlacrittyWindowFronters1Through9[9]
+local cmd_0 = FrillsAlacrittyAndTerminal.keyAlacrittyNewWindow
+-- local shift_cmd_0 = FrillsAlacrittyAndTerminal.keyAlacrittyForegrounderOpener
+-- local ctrl_cmd_0 = FrillsAlacrittyAndTerminal.keyTerminalNewWindow
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
@@ -838,19 +838,19 @@ local allHotkeys = {
   minimizeAndHideWindows.keyAllButFrontmost,
   minimizeAndHideWindows.keyAllWindows,
   -- Spoon: FrillsAlacrittyAndTerminal
-  frillsAlacrittyAndTerminal.keyUnminimzeAllAlacrittyWindows,
-  frillsAlacrittyAndTerminal.keysAlacrittyWindowFronters1Through9[1],
-  frillsAlacrittyAndTerminal.keysAlacrittyWindowFronters1Through9[2],
-  frillsAlacrittyAndTerminal.keysAlacrittyWindowFronters1Through9[3],
-  frillsAlacrittyAndTerminal.keysAlacrittyWindowFronters1Through9[4],
-  frillsAlacrittyAndTerminal.keysAlacrittyWindowFronters1Through9[5],
-  frillsAlacrittyAndTerminal.keysAlacrittyWindowFronters1Through9[6],
-  frillsAlacrittyAndTerminal.keysAlacrittyWindowFronters1Through9[7],
-  frillsAlacrittyAndTerminal.keysAlacrittyWindowFronters1Through9[8],
-  frillsAlacrittyAndTerminal.keysAlacrittyWindowFronters1Through9[9],
-  frillsAlacrittyAndTerminal.keyAlacrittyNewWindow,
-  frillsAlacrittyAndTerminal.keyAlacrittyForegrounderOpener,
-  frillsAlacrittyAndTerminal.keyTerminalNewWindow,
+  FrillsAlacrittyAndTerminal.keyUnminimzeAllAlacrittyWindows,
+  FrillsAlacrittyAndTerminal.keysAlacrittyWindowFronters1Through9[1],
+  FrillsAlacrittyAndTerminal.keysAlacrittyWindowFronters1Through9[2],
+  FrillsAlacrittyAndTerminal.keysAlacrittyWindowFronters1Through9[3],
+  FrillsAlacrittyAndTerminal.keysAlacrittyWindowFronters1Through9[4],
+  FrillsAlacrittyAndTerminal.keysAlacrittyWindowFronters1Through9[5],
+  FrillsAlacrittyAndTerminal.keysAlacrittyWindowFronters1Through9[6],
+  FrillsAlacrittyAndTerminal.keysAlacrittyWindowFronters1Through9[7],
+  FrillsAlacrittyAndTerminal.keysAlacrittyWindowFronters1Through9[8],
+  FrillsAlacrittyAndTerminal.keysAlacrittyWindowFronters1Through9[9],
+  FrillsAlacrittyAndTerminal.keyAlacrittyNewWindow,
+  FrillsAlacrittyAndTerminal.keyAlacrittyForegrounderOpener,
+  FrillsAlacrittyAndTerminal.keyTerminalNewWindow,
   -- Spoon: FrillsChrome
   FrillsChrome.keyNewChromeWindow,
   FrillsChrome.keyFrontChromeWindow,
