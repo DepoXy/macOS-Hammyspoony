@@ -885,8 +885,8 @@ hs.loadSpoon("LinuxlikeCutCopyPaste"):start()
 
 local allHotkeys = {
   -- Sppon: MinimizeAndHideWindows
-  minimizeAndHideWindows.keyAllButFrontmost,
-  minimizeAndHideWindows.keyAllWindows,
+  minimizeAndHideWindows and minimizeAndHideWindows.keyAllButFrontmost,
+  minimizeAndHideWindows and minimizeAndHideWindows.keyAllWindows,
   -- Spoon: FrillsAlacrittyAndTerminal
   FrillsAlacrittyAndTerminal.keyUnminimzeAllAlacrittyWindows,
   FrillsAlacrittyAndTerminal.keysAlacrittyWindowFronters1Through9[1],
