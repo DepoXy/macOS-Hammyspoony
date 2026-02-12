@@ -147,6 +147,15 @@ package.path = package.path
 --   ~/.kit/mOS/hammerspoons/Source/EmmyLua.spoon/annotations
 -- Which you'll want to reference from a `.luarc.json` file in
 -- each Lua project's root directory.
+--
+-- SAVVY: Note the LuaLS flags loadSpoon() usage if we don't check
+-- the return value is not nil.
+-- - So we guard spoon usage — e.g., `if spoon ~= nil` — to appease the
+--   language server. But we don't bother with any `else` blocks to handle
+--   the error, because Hammerspoon alerts the user if there's a problem.
+--   - It'll show a "Hammerspoon error" desktop notification (aka toast),
+--     it'll open the Hammerspoon Console, and the user will see an error
+--     message therein, e.g., "*** ERROR: Unable to load Spoon: Foo".
 
 hs.loadSpoon("EmmyLua")
 
