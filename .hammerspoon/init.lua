@@ -65,20 +65,25 @@
 --        (Not that we need all the Spoons,
 --         but this is just too easy.)
 
+-- For finding third-party Spoons, at the location installed by DepoXy.
 package.path = package.path
   .. ";"
   .. os.getenv("HOME")
   .. "/.kit/mOS/hammerspoons/Source/?.spoon/init.lua"
 
--- CXREF: For reusability, this core init.lua is mostly limited to defining
--- the keybindings, while most of the relevant functionality is implemented
--- by these individual Spoons:
+-- CXREF: For convenience, here are links to the individual Spoons
+-- at the paths installed by DepoXy (if you're using (Neo)Vim, put
+-- the cursor on a path and use the |gf| command to edit the file):
+--
 --   ~/.kit/mOS/macOS-Hammyspoony/Source/AppTapAttach.spoon/init.lua
 --   ~/.kit/mOS/macOS-Hammyspoony/Source/AppTapChrome.spoon/init.lua
+--   ~/.kit/mOS/macOS-Hammyspoony/Source/AppTapDisableHotkeys.spoon/init.lua
+--   ~/.kit/mOS/macOS-Hammyspoony/Source/AppTapFirefox.spoon/init.lua
 --   ~/.kit/mOS/macOS-Hammyspoony/Source/AppTapGnucash.spoon/init.lua
 --   ~/.kit/mOS/macOS-Hammyspoony/Source/AppTapLibreoffice.spoon/init.lua
 --   ~/.kit/mOS/macOS-Hammyspoony/Source/AppTapMeld.spoon/init.lua
 --   ~/.kit/mOS/macOS-Hammyspoony/Source/AppTapSlack.spoon/init.lua
+--   ~/.kit/mOS/macOS-Hammyspoony/Source/AppTapWindsurf.spoon/init.lua
 --   ~/.kit/mOS/macOS-Hammyspoony/Source/AppWindowChooser.spoon/init.lua
 --   ~/.kit/mOS/macOS-Hammyspoony/Source/BrowserWindowFronters.spoon/init.lua
 --   ~/.kit/mOS/macOS-Hammyspoony/Source/DateTimeSnips.spoon/init.lua
@@ -87,9 +92,12 @@ package.path = package.path
 --   ~/.kit/mOS/macOS-Hammyspoony/Source/KillTrepidly.spoon/init.lua
 --   ~/.kit/mOS/macOS-Hammyspoony/Source/LinuxlikeCutCopyPaste.spoon/init.lua
 --   ~/.kit/mOS/macOS-Hammyspoony/Source/MinimizeAndHideWindows.spoon/init.lua
+--   ~/.kit/mOS/macOS-Hammyspoony/Source/MotionUtils.spoon/init.lua
 --   ~/.kit/mOS/macOS-Hammyspoony/Source/NeverLoseFocus.spoon/init.lua
 --   ~/.kit/mOS/macOS-Hammyspoony/Source/TableUtils.spoon/init.lua
 --   ~/.kit/mOS/macOS-Hammyspoony/Source/URISetFrontmost.spoon/init.lua
+--
+-- For finding Hammyspoony Spoons, at the location installed by DepoXy.
 package.path = package.path
   .. ";"
   .. os.getenv("HOME")
@@ -141,6 +149,7 @@ hs.loadSpoon("EmmyLua")
 -- - The reloader tracks the directories for these files:
 --
 --    ~/.kit/mOS/macOS-Hammyspoony/.hammerspoon/init.lua
+--    ~/.kit/mOS/macOS-Hammyspoony/Source/*.spoon/init.lua
 --    ~/.depoxy/ambers/home/.hammerspoon/depoxy-hs.lua
 --    ~/.depoxy/running/home/.hammerspoon/client-hs.lua
 --
@@ -259,6 +268,9 @@ appTapAttach = hs.loadSpoon("AppTapAttach")
 appTapAttach:start()
 
 -------
+
+-- CXREF:
+-- ~/.kit/mOS/macOS-Hammyspoony/Source/AppTapGnucash.spoon/init.lua
 
 ---@type AppTapGnucash | nil
 local appTapGnucash = hs.loadSpoon("AppTapGnucash")
