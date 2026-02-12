@@ -216,6 +216,9 @@ end
 ---@type MinimizeAndHideWindows | nil
 local minimizeAndHideWindows = hs.loadSpoon("MinimizeAndHideWindows")
 
+-- HSTRY/2025-04-28: Was <Shift-Ctrl-Cmd|Alt-W>, but <-H> or <-M> makes more
+-- mnemonic sense (H for Hide or M for Minimize, vs. W for (do what to?) Windows).
+-- - And <-H> or <-M> also pairs well with existing <Cmd-H> amd <Cmd-M> bindings.
 if minimizeAndHideWindows ~= nil then
   minimizeAndHideWindows:bindHotkeys({
     -- BNDNG: <Shift-Ctrl-Cmd-M>
