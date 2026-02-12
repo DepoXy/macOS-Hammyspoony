@@ -3,7 +3,7 @@
 -- Project: https://github.com/DepoXy/macOS-Hammyspoony#🥄
 -- License: MIT
 
---- === AlacrittyAndTerminalConveniences ===
+--- === FrillsAlacrittyAndTerminal ===
 ---
 --- Download: [https://github.com/DepoXy/macOS-Hammyspoony/raw/release/Spoons/LinuxlikeCutCopyPaste.spoon.zip](https://github.com/DepoXy/macOS-Hammyspoony/raw/release/Spoons/LinuxlikeCutCopyPaste.spoon.zip)
 
@@ -12,17 +12,17 @@ local obj = {}
 obj.__index = obj
 
 --- Metadata
-obj.name = "AlacrittyAndTerminalConveniences"
+obj.name = "FrillsAlacrittyAndTerminal"
 obj.version = "1.0.0"
 obj.author = "Landon Bouma <https://tallybark.com/>"
 obj.homepage = "https://github.com/DepoXy/macOS-Hammyspoony#🥄"
 obj.license = "MIT - https://opensource.org/licenses/MIT"
 
---- AlacrittyAndTerminalConveniences.logger
+--- FrillsAlacrittyAndTerminal.logger
 --- Variable
 --- - Logger object used within the Spoon. Can be accessed to set
 ---   the default log level for the messages coming from the Spoon.
-obj.logger = hs.logger.new("AlacrittyAndTerminalConveniences")
+obj.logger = hs.logger.new("FrillsAlacrittyAndTerminal")
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
@@ -435,9 +435,9 @@ function obj:bindHotkeysTerminalNewWindow(mapping)
   end
 end
 
---- AlacrittyAndTerminalConveniences:bindHotkeys(mapping)
+--- FrillsAlacrittyAndTerminal:bindHotkeys(mapping)
 --- Method
---- Binds hotkeys for AlacrittyAndTerminalConveniences
+--- Binds hotkeys for FrillsAlacrittyAndTerminal
 ---
 --- Parameters:
 ---  * mapping - A table containing hotkey objifier/key details for the following items:
