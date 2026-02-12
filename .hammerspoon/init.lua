@@ -210,22 +210,6 @@ end
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
--- Load table utility fcns.
-
--- CXREF:
--- ~/.kit/mOS/macOS-Hammyspoony/Source/TableUtils.spoon/init.lua
-
-tableUtils = hs.loadSpoon("TableUtils")
-
--- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-
--- CXREF:
--- ~/.kit/mOS/macOS-Hammyspoony/Source/MotionUtils.spoon/init.lua
-
-motionUtils = hs.loadSpoon("MotionUtils")
-
--- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
-
 -- CXREF:
 -- ~/.kit/mOS/macOS-Hammyspoony/Source/MinimizeAndHideWindows.spoon/init.lua
 

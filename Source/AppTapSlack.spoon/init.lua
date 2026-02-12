@@ -24,6 +24,8 @@ obj.license = "MIT - https://opensource.org/licenses/MIT"
 ---   the default log level for the messages coming from the Spoon.
 obj.logger = hs.logger.new("AppTapSlack")
 
+local motionUtils = hs.loadSpoon("MotionUtils")
+
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 function obj:slackShortcutsGetEventtap()

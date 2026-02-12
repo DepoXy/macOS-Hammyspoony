@@ -26,6 +26,24 @@ obj.logger = hs.logger.new("AppTapChrome")
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
+local motionUtils = hs.loadSpoon("MotionUtils")
+
+if not motionUtils then
+  hs.alert.show("Please install missing Spoon for AppTapChrome — MotionUtils")
+
+  return {}
+end
+
+local tableUtils = hs.loadSpoon("TableUtils")
+
+if not tableUtils then
+  hs.alert.show("Please install missing Spoon for AppTapChrome — TableUtils")
+
+  return {}
+end
+
+-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
+
 --- AppTapChrome feature flags
 --- Variables
 --- - USAGE: To disable a feature, set its feature flag to false.

@@ -24,6 +24,8 @@ obj.license = "MIT - https://opensource.org/licenses/MIT"
 ---   the default log level for the messages coming from the Spoon.
 obj.logger = hs.logger.new("FrillsAlacrittyAndTerminal")
 
+local tableUtils = hs.loadSpoon("TableUtils")
+
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 --- USAGE: Use this boolean to control window fronters 1 through 9 togglability.

@@ -28,6 +28,8 @@ obj.license = "MIT - https://opensource.org/licenses/MIT"
 ---   the default log level for the messages coming from the Spoon.
 obj.logger = hs.logger.new("MotionUtils")
 
+local tableUtils = hs.loadSpoon("TableUtils")
+
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 -- Normal macOS motions:
