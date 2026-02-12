@@ -174,10 +174,10 @@ hs.loadSpoon("EmmyLua")
 --    ~/.depoxy/running/home/.hammerspoon/client-hs.lua
 --
 -- USAGE: Obvi, if you install this project to an alt. path (e.g., `~/src`),
--- you'll want to change the first path. (And you probably won't care about
--- the other two paths).
+-- you'll want to change the first two paths (and you probably won't care
+-- about the other two paths).
 -- - INERT: If you're a DepoXy user trying to use an alternative path,
---   e.g., DOPP_KIT=~/src, that's not plumbed here (though could be).
+--   e.g., DOPP_KIT=~/src, that's not plumbed here (though it could be).
 --   - We'd have to source the Client depoxyrc and read DOPP_KIT from it:
 --       ~/.depoxy/running/home/.config/depoxy/depoxyrc
 --   - But for now it's just easier to fork this project, or to use

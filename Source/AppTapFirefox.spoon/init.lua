@@ -59,7 +59,7 @@ end
 
 function obj:firefoxGetEventtapCallback(e)
   local eventType = e:getType()
-  -- SAVVY: Flags contain "fn" when non-character pressed.
+  -- SAVVY: Flags contain "fn" when non-character (aka "special") key pressed.
   -- - E.g., <Left>, <Right>, <Home>, <End>, etc.
   local eventFlags = e:getFlags()
 
