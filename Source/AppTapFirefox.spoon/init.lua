@@ -69,7 +69,8 @@ function obj:firefoxGetEventtapCallback(e)
 
     -- USAGE: Uncomment to debug/pry:
     --   print("e:getType(): " .. hs.inspect(eventType))
-    --   print("e:getFlags(): " .. tableUtils:tableJoin(eventFlags, ", "))
+    --   local TableUtils = hs.loadSpoon("TableUtils")
+    --   print("e:getFlags(): " .. TableUtils:tableJoin(eventFlags, ", "))
     --   print("e:getKeyCode(): " .. hs.inspect(keyCode))
     --   local unmodified = false
     --   print("e:getCharacters(false): " .. hs.inspect(e:getCharacters(unmodified)))
