@@ -62,8 +62,19 @@
 --
 --        which is where DepoXy clones it.
 --
---        (Not that we need all the Spoons,
---         but this is just too easy.)
+--        - DepoXy if the author's dotfiles repo:
+--
+--          https://github.com/DepoXy/depoxy
+--
+--        - Note that the Spoons themselves are designed to be
+--          redistributable and reusable, but this core init.lua
+--          is not. This file is instead tailored for the author
+--          — it's what enables the Spoon functionality and assigns
+--          the keybindings that the author likes. So unless you
+--          just want to use the same features and keybindings that
+--          the author uses, most users will probably copy what
+--          they want from this file and change the bindings and
+--          featureset to match their tastes.
 
 -- For finding third-party Spoons, at the location installed by DepoXy.
 package.path = package.path
