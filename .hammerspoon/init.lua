@@ -148,8 +148,12 @@ package.path = package.path
 -- Which you'll want to reference from a `.luarc.json` file in
 -- each Lua project's root directory.
 --
--- SAVVY: Note the LuaLS flags loadSpoon() usage if we don't check
--- the return value is not nil.
+-- SAVVY: Note the LuaLS flags loadSpoon() return value usage if
+-- we don't check the value is not nil when accessing variables.
+-- - Without nil checking, luals complains, even if
+--   you try using a disablement directive, e.g.:
+--     -- @diagnostic disable-next-line: need-check-nil
+--     minimizeAndHideWindows:launchOrFocusOrMinimize("Slack")    ● Undefined field `launchOrFocusOrMinimize`.
 -- - So we guard spoon usage — e.g., `if spoon ~= nil` — to appease the
 --   language server. But we don't bother with any `else` blocks to handle
 --   the error, because Hammerspoon alerts the user if there's a problem.
@@ -193,14 +197,16 @@ local dxc_cfg_dir = os.getenv("HOME") .. "/.depoxy/running/home/.hammerspoon"
 -- ~/.kit/mOS/hammerspoons/Source/ReloadConfiguration.spoon/init.lua
 
 local reloadConfig = hs.loadSpoon("ReloadConfiguration")
-reloadConfig.watch_paths = {
-  hs.configdir,
-  hmy_cfg_dir,
-  hmy_spn_dir,
-  dxy_cfg_dir,
-  dxc_cfg_dir,
-}
-reloadConfig:start()
+if reloadConfig ~= nil then
+  reloadConfig.watch_paths = {
+    hs.configdir,
+    hmy_cfg_dir,
+    hmy_spn_dir,
+    dxy_cfg_dir,
+    dxc_cfg_dir,
+  }
+  reloadConfig:start()
+end
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
@@ -226,12 +232,14 @@ motionUtils = hs.loadSpoon("MotionUtils")
 ---@type MinimizeAndHideWindows | nil
 local minimizeAndHideWindows = hs.loadSpoon("MinimizeAndHideWindows")
 
-minimizeAndHideWindows:bindHotkeys({
-  -- BNDNG: <Shift-Ctrl-Cmd-W>
-  allButFrontmost = { { "shift", "ctrl", "cmd" }, "W" },
-  -- BNDNG: <Shift-Ctrl-Alt-W>
-  allWindows = { { "shift", "ctrl", "alt" }, "W" },
-})
+if minimizeAndHideWindows ~= nil then
+  minimizeAndHideWindows:bindHotkeys({
+    -- BNDNG: <Shift-Ctrl-Cmd-M>
+    allButFrontmost = { { "shift", "ctrl", "cmd" }, "M" },
+    -- BNDNG: <Shift-Ctrl-Alt-M>
+    allWindows = { { "shift", "ctrl", "alt" }, "M" },
+  })
+end
 
 -- local shift_ctrl_cmd_w = minimizeAndHideWindows.keyAllButFrontmost
 -- local shift_ctrl_alt_w = minimizeAndHideWindows.keyAllWindows
@@ -644,7 +652,9 @@ end)
 
 -- BNDNG: <Shift-Ctrl-Cmd-F>
 local shift_ctrl_cmd_f = hs.hotkey.bind({ "shift", "ctrl", "cmd" }, "F", function()
-  minimizeAndHideWindows:launchOrFocusOrMinimize("Slack")
+  if minimizeAndHideWindows ~= nil then
+    minimizeAndHideWindows:launchOrFocusOrMinimize("Slack")
+  end
 end)
 
 -------
@@ -762,17 +772,19 @@ appWindowChooser:start()
 ---@type AppTapChrome | nil
 local appTapChrome = hs.loadSpoon("AppTapChrome")
 
--- USAGE: "Salt to taste" — In lieu of `bindHotkeys`, feature toggles.
--- - Note these all default true. They're included here for visibility.
-appTapChrome.enable["DeleteBackwardUsingCtrlW"] = true
-appTapChrome.enable["ReloadThisPageUsingF5"] = true
-appTapChrome.enable["AlwaysOnBackForwardUsingCmdLeftRight"] = true
-appTapChrome.enable["LinuxlikeLeftRightMotions"] = true
-appTapChrome.enable["LinuxlikeHomeEndMotions"] = false
-appTapChrome.enable["SometimesOnBackForwardUsingAltLeftRight"] = true
-appTapChrome.enable["OpenLinkInNewTabUsingCtrlClick"] = true
+if appTapChrome and appTapChrome.enable ~= nil then
+  -- USAGE: "Salt to taste" — In lieu of `bindHotkeys`, feature toggles.
+  -- - Note these all default true. They're included here for visibility.
+  appTapChrome.enable["DeleteBackwardUsingCtrlW"] = true
+  appTapChrome.enable["ReloadThisPageUsingF5"] = true
+  appTapChrome.enable["AlwaysOnBackForwardUsingCmdLeftRight"] = true
+  appTapChrome.enable["LinuxlikeLeftRightMotions"] = true
+  appTapChrome.enable["LinuxlikeHomeEndMotions"] = false
+  appTapChrome.enable["SometimesOnBackForwardUsingAltLeftRight"] = true
+  appTapChrome.enable["OpenLinkInNewTabUsingCtrlClick"] = true
 
-appTapChrome:start(appTapAttach)
+  appTapChrome:start(appTapAttach)
+end
 
 chromeWindowFilter = hs.window.filter.new("Google Chrome")
 
