@@ -22,7 +22,7 @@ obj.license = "MIT - https://opensource.org/licenses/MIT"
 --- Variable
 --- - Logger object used within the Spoon. Can be accessed to set
 ---   the default log level for the messages coming from the Spoon.
-obj.logger = hs.logger.new('AppTapDisableHotkeys')
+obj.logger = hs.logger.new("AppTapDisableHotkeys")
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
@@ -67,6 +67,7 @@ end
 --- Parameters:
 ---  * appTapAttach
 function obj:disableAllHotkeysForApp(appTapAttach, appName)
+  -- stylua: ignore
   appTapAttach:registerApptap(
     appName,
     function()
@@ -78,4 +79,3 @@ end
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 return obj
-

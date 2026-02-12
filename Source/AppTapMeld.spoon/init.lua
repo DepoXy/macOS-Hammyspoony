@@ -55,25 +55,26 @@ obj.license = "MIT - https://opensource.org/licenses/MIT"
 --- Variable
 --- - Logger object used within the Spoon. Can be accessed to set
 ---   the default log level for the messages coming from the Spoon.
-obj.logger = hs.logger.new('AppTapMeld')
+obj.logger = hs.logger.new("AppTapMeld")
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 function obj:meldGetEventtap()
+  -- stylua: ignore
   return hs.eventtap.new(
     {
       hs.eventtap.event.types.keyDown,
     },
     function(e)
       -- SAVVY: Return true as first table value to delete original event.
-      if e:getFlags():containExactly({"ctrl"}) then
+      if e:getFlags():containExactly({ "ctrl" }) then
         if false then
 
         -- *** Meld
 
         -- python3 > Quit Meld
         elseif e:getKeyCode() == hs.keycodes.map["q"] then
-          return true, {hs.eventtap.event.newKeyEvent({"cmd"}, hs.keycodes.map["q"], true)}
+          return true, { hs.eventtap.event.newKeyEvent({ "cmd" }, hs.keycodes.map["q"], true) }
 
         end
       end
@@ -103,4 +104,3 @@ end
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 return obj
-

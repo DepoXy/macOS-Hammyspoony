@@ -44,7 +44,7 @@ obj.license = "MIT - https://opensource.org/licenses/MIT"
 --- Variable
 --- - Logger object used within the Spoon. Can be accessed to set
 ---   the default log level for the messages coming from the Spoon.
-obj.logger = hs.logger.new('LinuxlikeCutCopyPaste')
+obj.logger = hs.logger.new("LinuxlikeCutCopyPaste")
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
@@ -78,9 +78,9 @@ function obj:emitCommandKeyEquivalent(char)
   local app = hs.application.frontmostApplication()
 
   if not self.frontmostApplicationUnless[app:name()] then
-    hs.eventtap.keyStroke({"cmd"}, char, app)
+    hs.eventtap.keyStroke({ "cmd" }, char, app)
   else
-    hs.eventtap.keyStroke({"ctrl"}, char, app)
+    hs.eventtap.keyStroke({ "ctrl" }, char, app)
   end
 end
 
@@ -93,8 +93,8 @@ end
 --- Parameters:
 ---  * None
 function obj:start()
-  for _, char in ipairs({"X", "C", "V", "A"}) do
-    hs.hotkey.bind({"ctrl"}, char, function()
+  for _, char in ipairs({ "X", "C", "V", "A" }) do
+    hs.hotkey.bind({ "ctrl" }, char, function()
       self:emitCommandKeyEquivalent(char)
     end)
   end
@@ -103,4 +103,3 @@ end
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 return obj
-

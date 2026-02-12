@@ -26,7 +26,7 @@ obj.license = "MIT - https://opensource.org/licenses/MIT"
 --- Variable
 --- - Logger object used within the Spoon. Can be accessed to set
 ---   the default log level for the messages coming from the Spoon.
-obj.logger = hs.logger.new('TableUtils')
+obj.logger = hs.logger.new("TableUtils")
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
@@ -72,7 +72,7 @@ end
 function obj:tableKeys(tbl)
   local keys = {}
 
-  for key,_ in pairs(tbl) do
+  for key, _ in pairs(tbl) do
     table.insert(keys, key)
   end
 
@@ -93,6 +93,7 @@ function obj:tableMerge(lhs, rhs)
   local newTbl = self:tableCopy(lhs)
 
   for key, val in pairs(rhs) do
+    -- stylua: ignore
     if type(val) == "table"
       and type(newTbl[key] or false) == "table"
     then
@@ -108,4 +109,3 @@ end
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 return obj
-

@@ -22,7 +22,7 @@ obj.license = "MIT - https://opensource.org/licenses/MIT"
 --- Variable
 --- - Logger object used within the Spoon. Can be accessed to set
 ---   the default log level for the messages coming from the Spoon.
-obj.logger = hs.logger.new('KillTrepidly')
+obj.logger = hs.logger.new("KillTrepidly")
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
@@ -75,9 +75,9 @@ function obj:killTrepidation()
 
   if not self.inhibitCtrlQBinding[app:name()] then
     -- CALSO: app:kill()
-    hs.eventtap.keyStroke({"cmd"}, "Q", app)
+    hs.eventtap.keyStroke({ "cmd" }, "Q", app)
   else
-    hs.eventtap.keyStroke({"ctrl"}, "Q", app)
+    hs.eventtap.keyStroke({ "ctrl" }, "Q", app)
   end
 end
 
@@ -85,10 +85,11 @@ end
 
 function obj:bindHotkeyKillTrepidly(mapping)
   if mapping["kill"] then
-    if (self.keyKill) then
+    if self.keyKill then
       self.keyKill:delete()
     end
 
+    -- stylua: ignore
     self.keyKill = hs.hotkey.bindSpec(
       mapping["kill"],
       function()
@@ -112,4 +113,3 @@ end
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 return obj
-

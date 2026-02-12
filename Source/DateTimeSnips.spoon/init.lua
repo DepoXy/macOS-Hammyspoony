@@ -22,7 +22,7 @@ obj.license = "MIT - https://opensource.org/licenses/MIT"
 --- Variable
 --- - Logger object used within the Spoon. Can be accessed to set
 ---   the default log level for the messages coming from the Spoon.
-obj.logger = hs.logger.new('DateTimeSnips')
+obj.logger = hs.logger.new("DateTimeSnips")
 
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
@@ -41,6 +41,7 @@ obj.keySnipISODateTimeDashed = nil
 --    https://github.com/landonb/dubs_edit_juice/blob/release/plugin/dubs_edit_juice.vim#L1513
 
 function obj:snipISODateToday()
+  -- stylua: ignore
   local task = hs.task.new(
     "/bin/dash",
     nil,
@@ -54,6 +55,7 @@ end
 -- - HSTRY: Named after erstwhile Homefries $(TTTtt:) command.
 
 function obj:snipISODateTimeNormal()
+  -- stylua: ignore
   local task = hs.task.new(
     "/bin/dash",
     nil,
@@ -67,6 +69,7 @@ end
 -- - CALSO: Homefries $(TTTtt-) command.
 
 function obj:snipISODateTimeDashed()
+  -- stylua: ignore
   local task = hs.task.new(
     "/bin/dash",
     nil,
@@ -80,10 +83,11 @@ end
 
 function obj:bindHotkeySnipISODateToday(mapping)
   if mapping["snipISODateToday"] then
-    if (self.keySnipISODateToday) then
+    if self.keySnipISODateToday then
       self.keySnipISODateToday:delete()
     end
 
+    -- stylua: ignore
     self.keySnipISODateToday = hs.hotkey.bindSpec(
       mapping["snipISODateToday"],
       function()
@@ -95,10 +99,11 @@ end
 
 function obj:bindHotkeySnipISODateTimeNormal(mapping)
   if mapping["snipISODateTimeNormal"] then
-    if (self.keySnipISODateTimeNormal) then
+    if self.keySnipISODateTimeNormal then
       self.keySnipISODateTimeNormal:delete()
     end
 
+    -- stylua: ignore
     self.keySnipISODateTimeNormal = hs.hotkey.bindSpec(
       mapping["snipISODateTimeNormal"],
       function()
@@ -110,10 +115,11 @@ end
 
 function obj:bindHotkeySnipISODateTimeDashed(mapping)
   if mapping["snipISODateTimeDashed"] then
-    if (self.keySnipISODateTimeDashed) then
+    if self.keySnipISODateTimeDashed then
       self.keySnipISODateTimeDashed:delete()
     end
 
+    -- stylua: ignore
     self.keySnipISODateTimeDashed = hs.hotkey.bindSpec(
       mapping["snipISODateTimeDashed"],
       function()
@@ -123,16 +129,15 @@ function obj:bindHotkeySnipISODateTimeDashed(mapping)
   end
 end
 
-
 --- DateTimeSnips:bindHotkeys(mapping)
 --- Method
 --- Binds hotkeys for DateTimeSnips
 ---
 --- Parameters:
 ---  * mapping - A table containing hotkey objifier/key details for the following items:
----   * snipISODateToday — 
----   * snipISODateTimeNormal — 
----   * snipISODateTimeDashed — 
+---   * snipISODateToday —
+---   * snipISODateTimeNormal —
+---   * snipISODateTimeDashed —
 function obj:bindHotkeys(mapping)
   self:bindHotkeySnipISODateToday(mapping)
   self:bindHotkeySnipISODateTimeNormal(mapping)
@@ -142,4 +147,3 @@ end
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 return obj
-
