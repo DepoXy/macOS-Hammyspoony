@@ -268,7 +268,7 @@ appTapGnucash:start(appTapAttach)
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 -- CXREF:
--- ~/.kit/mOS/macOS-Hammyspoony/Source/AppTapAttach.spoon/init.lua
+-- ~/.kit/mOS/macOS-Hammyspoony/Source/AppTapSlack.spoon/init.lua
 
 ---@type AppTapSlack | nil
 local appTapSlack = hs.loadSpoon("AppTapSlack")
@@ -573,7 +573,7 @@ local cmd_backtick = hs.hotkey.bind({ "cmd" }, "`", function()
   --   plugins but still haven't identified the sinner or sinners...
 end)
 
--- BNDNG: <Cmd-Backtick> (<Cmd-`>)
+-- BNDNG: <Ctrl-Backtick> (<Ctrl-`>)
 local ctrl_backtick = hs.hotkey.bind({ "ctrl" }, "`", function()
   -- - USYNC: The is the classic nvim-depoxy setup I use for notes
   --   (at least until I port those feature into my LazyVim setup):
