@@ -42,7 +42,7 @@ obj.logger = hs.logger.new("URISetFrontmost")
 --
 -- - One user of this function is `sensible-open`:
 --
---   https://github.com/landonb/sh-sensible-open#☔
+--   https://github.com/landonb/sh-sensible-open#🪂
 --
 -- `sensible-open` is used to open URLs from the command line, and by some
 -- shell apps (like git-open). But that call might not always front Chrome
