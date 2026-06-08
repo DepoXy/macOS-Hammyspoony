@@ -606,7 +606,7 @@ local ctrl_backtick = hs.hotkey.bind({ "ctrl" }, "`", function()
   -- - USYNC: The is the classic nvim-depoxy setup I use for notes
   --   (at least until I port those feature into my LazyVim setup):
   --     DEPOXY_NVIM_ALTERNATE="🦢"
-  --   ~/.depoxy/ambers/core/launchvim.sh
+  --   ~/.depoxy/ambers/core/neovim   .sh
   hs.window.find("🦢"):raise():focus()
 end)
 -- HSTRY/2025-02-25: Was previously <Shift-Cmd-Tilde> aka <D-~>
