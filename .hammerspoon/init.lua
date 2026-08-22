@@ -565,15 +565,16 @@ ignore_hotkey_slack(shift_alt_f)
 
 -------
 
--- MacVim foregrounder/opener
+-- Neovide/nvim foregrounder
 
 -- BNDNG: <Cmd-Backtick> (<Cmd-`>)
 local cmd_backtick = hs.hotkey.bind({ "cmd" }, "`", function()
-  -- Front long-running nvim TUI (running in, e.g., Alacritty).
+  -- Front Neovide or long-running nvim TUI (running in, e.g., Alacritty).
   --
-  -- - USYNC: This is my LazyVim setup I use for development:
-  --     NVIM_OPEN_SOCKETNAME="🧸"
-  --   ~/.depoxy/running/home/.config/depoxy/depoxyrc
+  -- - REFER: Socketname author uses to identify Neovim LazyVim instance.
+  --   - Declared in author's DepoXy depoxyrc file, e.g.:
+  --       ~/.config/depoxy/depoxyrc
+  --   - USYNC: DepoXy default NVIM_OPEN_SOCKETNAME= [GNOME] ‖ 🧸 [macOS]
   --
   --   - Yes, DepoXy is essentially author's dot-files project,
   --     but so is this Hammyspoony init.lua — I expect other
@@ -581,7 +582,7 @@ local cmd_backtick = hs.hotkey.bind({ "cmd" }, "`", function()
   --     but this top-level init.lua is pretty much tailored
   --     to the author's tastes, because I don't expect people
   --     to use this file verbatim. Perhaps for copy-paste, but
-  --     not as-is. So this DepoXy-specific config value (🦢) is
+  --     not as-is. So this DepoXy-specific config value (🧸) is
   --     fine. (Not sure who I'm convincing... myself, I suppose.)
   hs.window.find("🧸"):raise():focus()
 
